@@ -1,5 +1,5 @@
-
-## I am an undergraduate Physics and Math student at Austin Peay State University | Aspiring Computational Physicist
+# THMSCMPG.github.io
+## Hello, I'm Thomas Campagna! I am an undergraduate Physics and Math student at Austin Peay State University | Aspiring Computational Physicist
 
 Research Interests:
 - Condensed Matter
