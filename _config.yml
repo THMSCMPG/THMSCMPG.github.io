@@ -7,12 +7,11 @@ description: >- # This shows up in Google search results
   
 # Site Settings
 url: "https://THMSCMPG.github.io"
-baseurl: "" 
+baseurl: 
 
 # Build Settings
 markdown: kramdown
-theme: null
-remote_theme: alshedivat/al-folio
+theme: al-folio
 plugins:
   - jekyll-feed
   - jekyll-seo-tag
@@ -30,3 +29,4 @@ collections:
 # Navigation
 header_pages:
   - README.md
+  - projects.md
