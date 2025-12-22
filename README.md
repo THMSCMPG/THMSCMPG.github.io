@@ -33,13 +33,13 @@ Current progress: This simulator has recently passed the proof-of-concept phase 
 Comparing Five Methods for Determining the Refractive Index of a Glass Prism Using a Multi-Wavelength Laser and a Versatile Optical Setup
 - Presented at the 2025 Society of Physics Students Conference in Denver Colorado
 
-<img width="2500" height="2172" alt="SPS Con 2025 pptx" src="https://github.com/user-attachments/assets/ea566d68-ee3e-4cb6-85b4-e8d7005cfe8d" />
+<img width="900" height="1036" alt="SPS Con 2025 pptx" src="https://github.com/user-attachments/assets/ea566d68-ee3e-4cb6-85b4-e8d7005cfe8d" />
 
 Neutrino Oscillations: Reassessing the Standard Model
 - This poster was completed as a literature review
 - Presented at the 2025 Physics Symposium at Austin Peay State University
 
-<img width="2500" height="1770" alt="Poster Draft" src="https://github.com/user-attachments/assets/8079545d-742c-45dc-b942-3ba0315d291e" />
+<img width="900" height="1271" alt="Poster Draft" src="https://github.com/user-attachments/assets/8079545d-742c-45dc-b942-3ba0315d291e" />
 
 ### Relevant Coursework
 - Advanced Engineering Mathematics
