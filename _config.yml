@@ -1,5 +1,5 @@
 name: ""
-title: null
+title: Thomas Campagna
 email: thmscmpgn@gmail.com
 description: >- # This shows up in Google search results
   Undergraduate Physics & Math Student at Austin Peay State University. 
@@ -11,7 +11,8 @@ baseurl: ""
 
 # Build Settings
 markdown: kramdown
-theme: minima # Or your chosen theme like 'minimal-mistakes'
+theme: null
+remote_theme: alshedivat/al-folio
 plugins:
   - jekyll-feed
   - jekyll-seo-tag
@@ -19,3 +20,13 @@ plugins:
 # Math Rendering
 kramdown:
   math_engine: mathjax
+
+  # Layouts
+collections:
+  projects:
+    output: true
+    permalink: /:collection/:path/
+
+# Navigation
+header_pages:
+  - README.md
