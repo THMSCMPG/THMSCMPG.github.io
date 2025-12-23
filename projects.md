@@ -23,7 +23,7 @@
 It displays an empirical relationship between the index of refraction and the wavelength for any transparent medium. 
 
 <p style="text-align: center;">
-  <img src="latex.codecogs.com/svg.image?(\lambda)^2 = 1 + \sum_{i=1}^3 \frac{B_i \lambda^2}{\lambda^2 - C_i}"/>
+  <img src="latex.codecogs.com/svg.image?(\lambda)^2 = 1 + \sum_{i=1}^3 \frac{B_i \lambda^2}{\lambda^2 - C_i}">
 </p>
 
 - <span>$n$</span> represents the index of refraction
