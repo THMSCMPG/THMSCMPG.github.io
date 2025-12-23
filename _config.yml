@@ -11,7 +11,7 @@ baseurl: ""
 
 # Build Settings
 markdown: kramdown
-remote_theme: yaoyao-liu/minimal-light
+theme: jekyll-theme-slate
 plugins:
   - jekyll-feed
   - jekyll-seo-tag
