@@ -8,10 +8,6 @@ Research Interests:
 - Thermodynamics
 - Photonics
 
-Connect with Me:
-- Email: thmscmpgn@gmail.com
-
-
 ### Ongoing Research
 Current ongoing research includes:
 - Comparing 5 Methods for Determining the Index of Refraction of a Glass Prism
@@ -47,3 +43,5 @@ Neutrino Oscillations: Reassessing the Standard Model
 - Modern Physics
 - Optics
 
+Connect with Me:
+- Email: thmscmpgn@gmail.com
