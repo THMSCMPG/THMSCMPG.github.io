@@ -22,7 +22,7 @@
 **The Math:** The Sellmeier Equation is the standard for refractive index dispersion.
 It displays an empirical relationship between the index of refraction and the wavelength for any transparent medium. 
 
-<p>
+<p markdown="1">
 $n(\lambda)^2 = 1 + \sum_{i=1}^3 \frac{B_i \lambda^2}{\lambda^2 - C_i}$
 </p>
 
