@@ -22,11 +22,11 @@
 **The Math:** The Sellmeier Equation is the standard for refractive index dispersion.
 It displays an empirical relationship between the index of refraction and the wavelength for any transparent medium. 
 
-$$
-n(\lambda)^2 = 1 + \sum_{i=1}^3 \frac{B_i \lambda^2}{\lambda^2 - C_i}
-$$
+<p style="text-align: center;">
+  <img src="latex.codecogs.com(\lambda)^2 = 1 + \sum_{i=1}^3 \frac{B_i \lambda^2}{\lambda^2 - C_i}" alt="Sellmeier Equation">
+</p>
 
-- $n$ represents the index of refraction
+- <span>$n$</span> represents the index of refraction
 - $B_i$ and $C_i$ are experimentally determined coefficients representing physical features of our material
 - $\lambda$ is the laser's wavelength in nanometers
 
@@ -44,3 +44,7 @@ $$
 **Current Progress:** As of December 2025, the proof of concept has been finalized and I am moving forwards with optimization.
 
 
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<script>
+  MathJax = { tex: { inlineMath: [['$', '$']] } };
+</script>
