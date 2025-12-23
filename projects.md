@@ -1,3 +1,4 @@
+mathjax: true
 <div style="text-align: center; background-color: #2e353d; padding: 10px; border-radius: 5px; margin-bottom: 30px;">
 <span style="color: white;">
 <a href="{{ '/' | relative_url }}">Home</a> | 
