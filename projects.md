@@ -22,7 +22,7 @@
 **The Math:** The Sellmeier Equation is the standard for refractive index dispersion.
 It displays an empirical relationship between the index of refraction and the wavelength for any transparent medium. The Sellmeier Equation makes use of two experimentally determined coefficients representing physical features of the transparent medium and the lasers wavelength in nanometers.
 
-**The Findings:** The angle of minimum deviation has shown the highest accuracy (≤0.03% error from Sellmeier values).
+**The Findings:** The angle of minimum deviation has shown the highest accuracy (≤ 0.03% error from Sellmeier values).
 
 **Current Progress:** We are currently wrapping up RAE and beginning our sixth and final method, **Total Internal Reflection**.
 
