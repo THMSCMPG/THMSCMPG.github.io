@@ -1,3 +1,4 @@
+[Home]({{ THMSCMPG.github.io }}/) | [Research]({{ THMSCMPG.github.io }}/projects) | [Lab Reports]({{ THMSCMPG.github.io }}/reports) | [CV]({{ THMSCMPG.github.io }}/assets/Campagna_CV_2025.pdf){:target="_blank"}
 ## Laboratory Reports
 
 ### [Determination of the Focal Length of a Thin Lens Using Multiple Experimental Methods]({{ https://THMSCMPG.github.io }}/assets/reports/Lab_4.pdf){:target="_blank"}
