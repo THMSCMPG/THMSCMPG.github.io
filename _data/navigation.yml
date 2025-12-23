@@ -1,7 +1,7 @@
 main:
 - name: Home
-  link: /README.md
+  link: /README.html
 - name: Research
-  link: /projects.md
+  link: /projects.html
 - name: Reports
-  link: /reports.md
+  link: /reports.html
