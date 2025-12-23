@@ -19,7 +19,7 @@
 ### [Precision Laser Beam Profiling: Using Optical Lenses and the Knife-Edge Method]({{ https://THMSCMPG.github.io }}/assets/reports/Precision Laser Beam Profiling Campagna.pdf){:target="_blank"}
 * **Course:** Optics
 * **Skills:** Error propagation, nonlinear curve fitting, Gaussian beam characterization.
-* **Summary:** To characterize spatial light distribution, this project employed the knife-edge scanning method to measure the beam radius ($w$) of a laser. By fitting the integrated intensity profile ($G(x)$) to a complementary error function (erfc), the true Gaussian spatial intensity profile ($g(x)$) was derived. This methodology was used to verify the 5x magnification factor of a Galilean telescope beam expander.
+* **Summary:** To characterize spatial light distribution, this project employed the knife-edge scanning method to measure the beam radius (w) of a laser. By fitting the integrated intensity profile (G(x)) to a complementary error function (erfc), the true Gaussian spatial intensity profile (g(x)) was derived. This methodology was used to verify the 5x magnification factor of a Galilean telescope beam expander.
 
 ---
 
