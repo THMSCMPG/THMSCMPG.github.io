@@ -10,16 +10,18 @@ Research Interests:
 
 ### Ongoing Research
 Current ongoing research includes:
-- Comparing 5 Methods for Determining the Index of Refraction of a Glass Prism
+#### Comparing 5 Methods for Determining the Index of Refraction of a Glass Prism
 We focus on 5 methods, their accuracy and pedagogical value for undergraduate physics. Methods include minimum deviation, Fresnel reflectance, fitting to the minimum deviation curve, Brewster’s angle, and Rotating Analyzer Ellipsometry (RAE). We will be continuing research moving forward with total internal reflection.
 
 <img width="883" alt="Screenshot 2025-12-22 at 4 13 10 PM" src="https://github.com/user-attachments/assets/a1b161fd-f87d-41e4-8685-dfb5d922df1d" />
 
 _Figure 1: This figure shows a plot from October 28th, 2025 comparing the 5 methods determined index's with the Sellmeier Equation. This plot does not include our most recent data for RAE_
 
-- Building a Tightly Coupled Physics Simulator with Multi-Fidelity Integration
+#### Atmospheric Unified Radiation Assessment with Multi-Fidelity
 Since November 2025, I have taken on an independent research project to build a tightly coupled physics simulation involving the Boltzmann Transport Equation and the Navier Stokes Equations, optimized for speed while limiting the loss in accuracy through multi-fidelity integration. The goal of this research is to design a simulation that will model a local micro-climate and photon interactions with a solar panel to determine the energy efficiency, heat distribution, and total damage to the device over time. The simulation is written in Fortran.
 Current progress: This simulator has recently passed the proof-of-concept phase and is moving on to further development.
+
+[View My Projects]({{ THMSCMPG.github.io }}/projects.md)
 
 ### Technical Skills
 - Languages: Python, Fortran, MATLAB, LaTeX
