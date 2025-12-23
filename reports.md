@@ -9,21 +9,21 @@
 
 ## Laboratory Reports
 
-### [Determination of the Focal Length of a Thin Lens Using Multiple Experimental Methods]({{ https://THMSCMPG.github.io }}/assets/reports/Lab_4.pdf){:target="_blank"}
+### [Determination of the Focal Length of a Thin Lens Using Multiple Experimental Methods]({{ https://THMSCMPG.github.io }}/assets/reports/Determination of the Focal Length Campagna.pdf){:target="_blank"}
 * **Course:** Optics
 * **Skills:** Error propagation.
 * **Summary:** 
 
 ---
 
-### [Precision Laser Beam Profiling: Using Optical Lenses and the Knife-Edge Method]({{ https://THMSCMPG.github.io }}/assets/reports/Lab_Report___Optics___Lab_2.pdf){:target="_blank"}
+### [Precision Laser Beam Profiling: Using Optical Lenses and the Knife-Edge Method]({{ https://THMSCMPG.github.io }}/assets/reports/Precision Laser Beam Profiling Campagna.pdf){:target="_blank"}
 * **Course:** Optics
 * **Skills:** Error propagation.
 * **Summary:** 
 
 ---
 
-### [Mapping the Magnetic Field of a Short, Thick Solenoid]({{ https://THMSCMPG.github.io }}/assets/reports/Lab Reports.pdf){:target="_blank"}
+### [Mapping the Magnetic Field of a Short, Thick Solenoid]({{ https://THMSCMPG.github.io }}/assets/reports/Mapping the Magnetic Field Campagna.pdf){:target="_blank"}
 * **Course:** University Physics II
 * **Skills:** Error propagation.
 * **Summary:** 
