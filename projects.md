@@ -24,11 +24,11 @@ It displays an empirical relationship between the index of refraction and the wa
 
 $$ n(\lambda)^2 = 1 + \sum_{i=1}^3 \frac{B_i \lambda^2}{\lambda^2 - C_i} $$
 
-- $$ n $$ represents the index of refraction
-- $$ B_i $$ and $$ C_i $$ are experimentally determined coefficients representing physical features of our material
-- $$ \lambda $$ is the laser's wavelength in nanometers
+- $n$ represents the index of refraction
+- $B_i$ and $C_i$ are experimentally determined coefficients representing physical features of our material
+- $\lambda$ is the laser's wavelength in nanometers
 
-**The Findings:** The angle of minimum deviation has shown the highest accuracy ($$\leq 0.03%$$ error from Sellmeier values).
+**The Findings:** The angle of minimum deviation has shown the highest accuracy ($\leq 0.03%$ error from Sellmeier values).
 
 **Current Progress:** We are currently wrapping up RAE and beginning our sixth and final method, **Total Internal Reflection**.
 
