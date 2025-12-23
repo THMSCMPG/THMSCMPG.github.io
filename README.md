@@ -17,7 +17,6 @@ Research Interests:
 - Photonics
 
 ### Ongoing Research
-Current ongoing research includes:
 #### Comparing 5 Methods for Determining the Index of Refraction of a Glass Prism
 We focus on 5 methods, their accuracy and pedagogical value for undergraduate physics. Methods include minimum deviation, Fresnel reflectance, fitting to the minimum deviation curve, Brewster’s angle, and Rotating Analyzer Ellipsometry (RAE). We will be continuing research moving forward with total internal reflection.
 
