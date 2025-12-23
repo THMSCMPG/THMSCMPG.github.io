@@ -20,15 +20,7 @@
 - Rotating Analyzer Ellipsometry (RAE)
 
 **The Math:** The Sellmeier Equation is the standard for refractive index dispersion.
-It displays an empirical relationship between the index of refraction and the wavelength for any transparent medium. 
-
-<p style="text-align: center;">
-  <img src="latex.codecogs.com/svg.image?(\lambda)^2 = 1 + \sum_{i=1}^3 \frac{B_i \lambda^2}{\lambda^2 - C_i}">
-</p>
-
-- <span>$n$</span> represents the index of refraction
-- $B_i$ and $C_i$ are experimentally determined coefficients representing physical features of our material
-- $\lambda$ is the laser's wavelength in nanometers
+It displays an empirical relationship between the index of refraction and the wavelength for any transparent medium. The Sellmeier Equation makes use of two experimentally determined coefficients representing physical features of the transparent medium and the lasers wavelength in nanometers.
 
 **The Findings:** The angle of minimum deviation has shown the highest accuracy ($\leq 0.03%$ error from Sellmeier values).
 
@@ -42,9 +34,3 @@ It displays an empirical relationship between the index of refraction and the wa
 **Technical Stack:** The simulation's program is written in Fortran 90 and OpenMP. I take advantage of Monte-Carlo simulations, the diffusion approximation, the poisson approximation, and coarse discretization.
 
 **Current Progress:** As of December 2025, the proof of concept has been finalized and I am moving forwards with optimization.
-
-
-<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-<script>
-  MathJax = { tex: { inlineMath: [['$', '$']] } };
-</script>
