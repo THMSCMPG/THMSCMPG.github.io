@@ -16,7 +16,7 @@ Current ongoing research includes:
 - Comparing 5 Methods for Determining the Index of Refraction of a Glass Prism
 We focus on 5 methods, their accuracy and pedagogical value for undergraduate physics. Methods include minimum deviation, Fresnel reflectance, fitting to the minimum deviation curve, Brewster’s angle, and Rotating Analyzer Ellipsometry (RAE). We will be continuing research moving forward with total internal reflection.
 
-<img width="883" height="604" alt="Screenshot 2025-12-22 at 4 13 10 PM" src="https://github.com/user-attachments/assets/a1b161fd-f87d-41e4-8685-dfb5d922df1d" />
+<img width="883" alt="Screenshot 2025-12-22 at 4 13 10 PM" src="https://github.com/user-attachments/assets/a1b161fd-f87d-41e4-8685-dfb5d922df1d" />
 
 _Figure 1: This figure shows a plot from October 28th, 2025 comparing the 5 methods determined index's with the Sellmeier Equation. This plot does not include our most recent data for RAE_
 
@@ -33,13 +33,13 @@ Current progress: This simulator has recently passed the proof-of-concept phase 
 Comparing Five Methods for Determining the Refractive Index of a Glass Prism Using a Multi-Wavelength Laser and a Versatile Optical Setup
 - Presented at the 2025 Society of Physics Students Conference in Denver Colorado
 
-<img width="900" height="1036" alt="SPS Con 2025 pptx" src="https://github.com/user-attachments/assets/ea566d68-ee3e-4cb6-85b4-e8d7005cfe8d" />
+<img width="900" alt="SPS Con 2025 pptx" src="https://github.com/user-attachments/assets/ea566d68-ee3e-4cb6-85b4-e8d7005cfe8d" />
 
 Neutrino Oscillations: Reassessing the Standard Model
 - This poster was completed as a literature review
 - Presented at the 2025 Physics Symposium at Austin Peay State University
 
-<img width="900" height="1271" alt="Poster Draft" src="https://github.com/user-attachments/assets/8079545d-742c-45dc-b942-3ba0315d291e" />
+<img width="900" alt="Poster Draft" src="https://github.com/user-attachments/assets/8079545d-742c-45dc-b942-3ba0315d291e" />
 
 ### Relevant Coursework
 - Advanced Engineering Mathematics
