@@ -3,5 +3,5 @@ main:
   link: /README.md
 - name: Research
   link: /projects.md
-- name: Lab Reports
+- name: Reports
   link: /reports.md
