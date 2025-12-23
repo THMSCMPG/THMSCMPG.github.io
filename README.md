@@ -1,9 +1,9 @@
 <div style="text-align: center; background-color: #2e353d; padding: 10px; border-radius: 5px; margin-bottom: 30px;">
   <span style="color: white;">
-    [Home]({{ site.baseurl }}/) &nbsp;&nbsp;|&nbsp;&nbsp;
-    [Research]({{ site.baseurl }}/projects) &nbsp;&nbsp;|&nbsp;&nbsp;
-    [Lab Reports]({{ site.baseurl }}/reports) &nbsp;&nbsp;|&nbsp;&nbsp;
-    [CV]({{ site.baseurl }}/assets/Campagna_CV_2025.pdf){:target="_blank"}
+    <a href="{{ '/' | relative_url }}">Home</a> | 
+    <a href="{{ '/projects' | relative_url }}">Research</a> | 
+    <a href="{{ '/reports' | relative_url }}">Lab Reports</a> | 
+    <a href="{{ '/assets/Campagna_CV_2025.pdf' | relative_url }}" target="_blank">CV</a>
   </span>
 </div>
 
