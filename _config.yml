@@ -11,7 +11,7 @@ baseurl: ""
 
 # Build Settings
 markdown: kramdown
-theme: jekyll-theme-slate
+theme: jekyll-theme-al-folio
 plugins:
   - jekyll-feed
   - jekyll-seo-tag
