@@ -1,7 +1,10 @@
-main:
-- name: Home
-  link: /README.html
-- name: Research
-  link: /projects.html
-- name: Reports
-  link: /reports.html
+# Custom Navigation Variables
+nav_links:
+  - title: Home
+    url: /
+  - title: Research
+    url: /projects
+  - title: Lab Reports
+    url: /reports
+  - title: CV
+    url: /assets/Campagna_CV_2025.pdf
