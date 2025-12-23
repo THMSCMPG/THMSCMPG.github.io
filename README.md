@@ -1,9 +1,9 @@
 <div style="text-align: center; background-color: #2e353d; padding: 10px; border-radius: 5px; margin-bottom: 30px;">
   <span style="color: white;">
-    [Home]({{ THMSCMPG.github.io }}/) &nbsp;&nbsp;|&nbsp;&nbsp;
-    [Research]({{ THMSCMPG.github.io }}/projects) &nbsp;&nbsp;|&nbsp;&nbsp;
-    [Lab Reports]({{ THMSCMPG.github.io }}/reports) &nbsp;&nbsp;|&nbsp;&nbsp;
-    [CV]({{ THMSCMPG.github.io }}/assets/Campagna_CV_2025.pdf){:target="_blank"}
+    [Home]({{ site.baseurl }}/) &nbsp;&nbsp;|&nbsp;&nbsp;
+    [Research]({{ site.baseurl }}/projects) &nbsp;&nbsp;|&nbsp;&nbsp;
+    [Lab Reports]({{ site.baseurl }}/reports) &nbsp;&nbsp;|&nbsp;&nbsp;
+    [CV]({{ site.baseurl }}/assets/Campagna_CV_2025.pdf){:target="_blank"}
   </span>
 </div>
 
