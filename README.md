@@ -1,4 +1,4 @@
-<div style="text-align: center; margin-bottom: 20px;">
+<div style="text-align: center; background-color: #2e353d; padding: 10px; border-radius: 5px; margin-bottom: 30px;">
   [Home]({{ THMSCMPG.github.io }}/) | 
   [Research]({{ THMSCMPG.github.io }}/projects) | 
   [Lab Reports]({{ THMSCMPG.github.io }}/reports) | 
