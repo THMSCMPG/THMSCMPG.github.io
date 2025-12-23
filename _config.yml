@@ -11,7 +11,7 @@ baseurl: ""
 
 # Build Settings
 markdown: kramdown
-theme: slate
+theme: Slate
 plugins:
   - jekyll-feed
   - jekyll-seo-tag
