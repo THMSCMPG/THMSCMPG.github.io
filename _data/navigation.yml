@@ -1,9 +1,7 @@
 main:
-  - title: "Home"
-    url: /
-  - title: "Projects"
-    url: /projects/
-  - title: "Reports"
-    url: /reports/
-  - title: "CV"
-    url: /assets/Campagna_CV_2025.pdf
+- name: Home
+  link: /README.md
+- name: Research
+  link: /projects.md
+- name: Lab Reports
+  link: /reports.md
