@@ -1,4 +1,4 @@
-# THMSCMPG.github.io
+[Home]({{ THMSCMPG.github.io }}/) | [Research]({{ THMSCMPG.github.io }}/projects) | [Lab Reports]({{ THMSCMPG.github.io }}/reports) | [CV]({{ THMSCMPG.github.io }}/assets/Campagna_CV_2025.pdf){:target="_blank"}
 
 Hello, I'm Thomas Campagna! I am an undergraduate Physics and Math student at Austin Peay State University.
 [Download CV]({{ https.THMSCMPG.github.io }}/assets/Campagna_CV_2025.pdf){:target="_blank"}
