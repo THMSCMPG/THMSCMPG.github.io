@@ -1,6 +1,7 @@
 # THMSCMPG.github.io
 
 Hello, I'm Thomas Campagna! I am an undergraduate Physics and Math student at Austin Peay State University.
+[Download CV]({{ https.THMSCMPG.github.io }}/assets/Campagna_CV_2025.pdf)
 
 Research Interests:
 - Condensed Matter
