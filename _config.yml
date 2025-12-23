@@ -21,6 +21,8 @@ kramdown:
   input: GFM # GitHub Flavored Markdown
   syntax_highlighter: rouge
 
+favicon: /assets/favicon.png
+
 # Navigation
 header_pages:
   - README.md
