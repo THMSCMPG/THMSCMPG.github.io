@@ -11,7 +11,7 @@ baseurl:
 
 # Build Settings
 markdown: kramdown
-theme: al-folio
+theme: slate
 plugins:
   - jekyll-feed
   - jekyll-seo-tag
@@ -19,12 +19,6 @@ plugins:
 # Math Rendering
 kramdown:
   math_engine: mathjax
-
-  # Layouts
-collections:
-  projects:
-    output: true
-    permalink: /:collection/:path/
 
 # Navigation
 header_pages:
