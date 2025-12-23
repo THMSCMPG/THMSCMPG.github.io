@@ -37,7 +37,7 @@ $$ n(\lambda)^2 = 1 + \sum_{i=1}^3 \frac{B_i \lambda^2}{\lambda^2 - C_i} $$
 
 **The Methodology:** Currently, I am using a low-fidelity model (fast, less accurate) to guide a high-fidelity model (slow, very accurate) to save time without losing physics for each set of equations. The resulting outputs are compared with the data produced by a coupled high-fidelity only model.
 
-**Technical Stack:** Mention Fortran 90, OpenMP (if you're using parallelization), and any numerical methods (e.g., Finite Difference or Runge-Kutta). The simulation's program is written in Fortran 90 and OpenMP. I take advantage of Monte-Carlo simulations, the diffusion approximation, the poisson approximation, and coarse discretization.
+**Technical Stack:** The simulation's program is written in Fortran 90 and OpenMP. I take advantage of Monte-Carlo simulations, the diffusion approximation, the poisson approximation, and coarse discretization.
 
 **Current Progress:** As of December 2025, the proof of concept has been finalized and I am moving forwards with optimization.
 
