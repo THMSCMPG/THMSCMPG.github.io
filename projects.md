@@ -38,7 +38,9 @@ It displays an empirical relationship between the index of refraction and the wa
 <img width="640" alt="temperature_result" src="https://github.com/user-attachments/assets/8335d10a-f222-475d-8fde-8c1e0b626a56" />
 
 | Fig. 1: 2D temperature graph |
+| --- |
 
 <img width="640" alt="space_time_3d_surface" src="https://github.com/user-attachments/assets/6463f09c-22e5-47a2-8dfa-a9c4c0bbf42f" />
 
 | Fig. 2: 3D temperature graph for x-coordinate over time |
+| --- |
