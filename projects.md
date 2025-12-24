@@ -33,7 +33,7 @@ It displays an empirical relationship between the index of refraction and the wa
 
 **Technical Stack:** The simulation's program is written in Fortran 90 and OpenMP. I take advantage of Monte-Carlo simulations, the diffusion approximation, the poisson approximation, and coarse discretization.
 
-**Current Progress:** As of December 2025, the proof of concept has been finalized and I am moving forwards with optimization. Check out the repository for [AURA-MF](https://github.com/THMSCMPG/AURA-MF/tree/21574f323b4fc15584d627b7cfb37282b85b381d)
+**Current Progress:** As of December 2025, the proof of concept has been finalized and I am moving forwards with optimization. Check out the repository for [AURA-MF](https://github.com/THMSCMPG/AURA-MF/tree/21574f323b4fc15584d627b7cfb37282b85b381d){:target="_blank"}
 
 <img width="640" alt="temperature_result" src="https://github.com/user-attachments/assets/8335d10a-f222-475d-8fde-8c1e0b626a56" />
 <table align='center'>
