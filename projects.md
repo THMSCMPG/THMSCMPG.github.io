@@ -1,11 +1,26 @@
-<div style="text-align: justify; background-color: #2e353d; padding: 10px; border-radius: 5px; margin-bottom: 30px;">
-<span style="color: white;">
-<a href="{{ '/' | relative_url }}">Home</a> | 
-<a href="{{ '/projects' | relative_url }}">Research</a> | 
-<a href="{{ '/reports' | relative_url }}">Lab Reports</a> | 
-<a href="{{ '/assets/Campagna_CV_2025.pdf' | relative_url }}" target="_blank">CV</a>
-</span>
+<div style="background-color: #2e353d; padding: 15px; border-radius: 8px; margin-bottom: 30px;">
+  <table style="width: 100%; border-collapse: separate; border-spacing: 10px 0;">
+    <tr>
+      <!-- Home Button -->
+      <td style="background-color: #4a5568; border-radius: 5px; text-align: center; padding: 0;">
+        <a href="{{ '/' | relative_url }}" style="color: white; text-decoration: none; display: block; padding: 10px; font-family: sans-serif;">Home</a>
+      </td>
+      <!-- Research Button -->
+      <td style="background-color: #4a5568; border-radius: 5px; text-align: center; padding: 0;">
+        <a href="{{ '/projects' | relative_url }}" style="color: white; text-decoration: none; display: block; padding: 10px; font-family: sans-serif;">Research</a>
+      </td>
+      <!-- Lab Reports Button -->
+      <td style="background-color: #4a5568; border-radius: 5px; text-align: center; padding: 0;">
+        <a href="{{ '/reports' | relative_url }}" style="color: white; text-decoration: none; display: block; padding: 10px; font-family: sans-serif;">Lab Reports</a>
+      </td>
+      <!-- CV Button -->
+      <td style="background-color: #4a5568; border-radius: 5px; text-align: center; padding: 0;">
+        <a href="{{ '/assets/Campagna_CV_2025.pdf' | relative_url }}" target="_blank" style="color: white; text-decoration: none; display: block; padding: 10px; font-family: sans-serif;">CV</a>
+      </td>
+    </tr>
+  </table>
 </div>
+
 
 # My Research Projects
 
