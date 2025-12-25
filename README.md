@@ -11,7 +11,6 @@
       color: #003d80;
     }
   </style>
-  
   <a class="nav-button" href="{{ '/' | relative_url }}">Home</a> | 
   <a class="nav-button" href="{{ '/projects' | relative_url }}">Research</a> | 
   <a class="nav-button" href="{{ '/reports' | relative_url }}">Lab Reports</a> | 
