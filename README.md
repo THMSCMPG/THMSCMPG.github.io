@@ -22,11 +22,22 @@ We focus on 5 methods, their accuracy and pedagogical value for undergraduate ph
 
 <img width="883" alt="Screenshot 2025-12-22 at 4 13 10 PM" src="https://github.com/user-attachments/assets/a1b161fd-f87d-41e4-8685-dfb5d922df1d" />
 
-_Figure 1: This figure shows a plot from our poster presentation on October 30th, 2025 comparing the 5 methods determined index's with the Sellmeier Equation. This plot does not include our most recent data for RAE._
+<table align='center', style='background-color: E7F9FE'>
+  <tr>
+    <th>Figure 1: This figure shows a plot from our poster presentation on October 30th, 2025 comparing the 5 methods determined index's with the Sellmeier Equation. This plot does not include our most recent data for RAE.</th>
+  </tr>
+</table>
 
 #### Atmospheric Unified Radiation Assessment with Multi-Fidelity
 Since November 2025, I have taken on an independent research project to build a tightly coupled physics simulation involving the Boltzmann Transport Equation and the Navier Stokes Equations, optimized for speed while limiting the loss in accuracy through multi-fidelity integration. The goal of this research is to design a simulation that will model a local micro-climate and photon interactions with a solar panel to determine the energy efficiency, heat distribution, and total damage to the device over time. The simulation is written in Fortran.
 Current progress: This simulator has recently passed the proof-of-concept phase and is moving on to further development.
+
+<img width="640" alt="temperature_result" src="https://github.com/user-attachments/assets/8335d10a-f222-475d-8fde-8c1e0b626a56" />
+<table align='center', style='background-color: E7F9FE'>
+  <tr>
+    <th>Fig. 1: 2D temperature graph, high-fidelity only model.</th>
+  </tr>
+</table>
 
 ### Technical Skills
 - Languages: Python, Fortran, MATLAB, LaTeX
