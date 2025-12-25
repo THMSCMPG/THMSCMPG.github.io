@@ -37,7 +37,7 @@ It displays an empirical relationship between the index of refraction and the wa
 
 
 <img width="640" alt="space_time_3d_surface" src="https://github.com/user-attachments/assets/6463f09c-22e5-47a2-8dfa-a9c4c0bbf42f" />
-<table align='center', style='background-color: E7F9FE'>
+<table style='align: center; background-color: E7F9FE'>
   <tr>
     <th>Fig. 2: 3D temperature graph for x-coordinate over time, high-fidelity only model.</th>
   </tr>
