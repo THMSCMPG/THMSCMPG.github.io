@@ -1,4 +1,4 @@
-<div style="text-align: center; background-color: #2e353d; padding: 10px; border-radius: 5px; margin-bottom: 30px;">
+<div style="text-align: center; background-color: E7F9FE; padding: 10px; border-radius: 5px; margin-bottom: 30px;">
 <span style="color: white;">
 <a href="{{ '/' | relative_url }}">Home</a> | 
 <a href="{{ '/projects' | relative_url }}">Research</a> | 
@@ -24,7 +24,7 @@ We focus on 5 methods, their accuracy and pedagogical value for undergraduate ph
 
 <table align='center', style='background-color: E7F9FE'>
   <tr>
-    <th>Figure 1: This figure shows a plot from our poster presentation on October 30th, 2025 comparing the 5 methods determined index's with the Sellmeier Equation. This plot does not include our most recent data for RAE.</th>
+    <th>Fig. 1: This figure shows a plot from our poster presentation on October 30th, 2025 comparing the 5 methods determined index's with the Sellmeier Equation. This plot does not include our most recent data for RAE.</th>
   </tr>
 </table>
 
@@ -33,9 +33,9 @@ Since November 2025, I have taken on an independent research project to build a 
 Current progress: This simulator has recently passed the proof-of-concept phase and is moving on to further development.
 
 <img width="640" alt="temperature_result" src="https://github.com/user-attachments/assets/8335d10a-f222-475d-8fde-8c1e0b626a56" />
-<table align='center', style='background-color: E7F9FE'>
+<table style='align: center; background-color: E7F9FE'>
   <tr>
-    <th>Fig. 1: 2D temperature graph, high-fidelity only model.</th>
+    <th>Fig. 2: 2D temperature graph, high-fidelity only model.</th>
   </tr>
 </table>
 
