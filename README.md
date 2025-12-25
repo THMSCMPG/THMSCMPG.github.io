@@ -1,20 +1,13 @@
-<div style="text-align: center; background-color: #E7F9FE; padding: 15px; border: 2px solid #b2d8e5; border-radius: 8px; margin-bottom: 30px;">
-  <style>
-    .nav-button {
-      color: #0056b3; 
-      text-decoration: none; 
-      font-weight: bold; 
-      padding: 5px 10px;
-    }
-    .nav-button:hover {
-      text-decoration: underline;
-      color: #003d80;
-    }
-  </style>
-  <a class="nav-button" href="{{ '/' | relative_url }}">Home</a> | 
-  <a class="nav-button" href="{{ '/projects' | relative_url }}">Research</a> | 
-  <a class="nav-button" href="{{ '/reports' | relative_url }}">Lab Reports</a> | 
-  <a class="nav-button" href="{{ '/assets/Campagna_CV_2025.pdf' | relative_url }}" target="_blank">CV</a>
+<div style="text-align: center; background-color: #E7F9FE; padding: 20px; border: 2px solid #b2d8e5; border-radius: 8px; margin-bottom: 30px;">
+  
+  <a href="{{ '/' | relative_url }}" style="background-color: white; color: #0056b3; border: 1px solid #b2d8e5; border-radius: 5px; padding: 8px 15px; text-decoration: none; font-weight: bold; margin: 0 5px; display: inline-block;">Home</a>
+  
+  <a href="{{ '/projects' | relative_url }}" style="background-color: white; color: #0056b3; border: 1px solid #b2d8e5; border-radius: 5px; padding: 8px 15px; text-decoration: none; font-weight: bold; margin: 0 5px; display: inline-block;">Research</a>
+  
+  <a href="{{ '/reports' | relative_url }}" style="background-color: white; color: #0056b3; border: 1px solid #b2d8e5; border-radius: 5px; padding: 8px 15px; text-decoration: none; font-weight: bold; margin: 0 5px; display: inline-block;">Lab Reports</a>
+  
+  <a href="{{ '/assets/Campagna_CV_2025.pdf' | relative_url }}" target="_blank" style="background-color: white; color: #0056b3; border: 1px solid #b2d8e5; border-radius: 5px; padding: 8px 15px; text-decoration: none; font-weight: bold; margin: 0 5px; display: inline-block;">CV</a>
+
 </div>
 
 Hello, I'm Thomas Campagna! I am an undergraduate Physics and Math student at Austin Peay State University. I am an aspiring Computational Physicist specializing in Photonics and Environmental Physics. I have a particular interest in studying climate physics and how it relates to sustainable energy.
