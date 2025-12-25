@@ -1,10 +1,21 @@
-<div style="text-align: center; background-color: E7F9FE; padding: 10px; border-radius: 5px; margin-bottom: 30px;">
-<span style="color: white;">
-<a href="{{ '/' | relative_url }}">Home</a> | 
-<a href="{{ '/projects' | relative_url }}">Research</a> | 
-<a href="{{ '/reports' | relative_url }}">Lab Reports</a> | 
-<a href="{{ '/assets/Campagna_CV_2025.pdf' | relative_url }}" target="_blank">CV</a>
-</span>
+<div style="text-align: center; background-color: #E7F9FE; padding: 15px; border: 2px solid #b2d8e5; border-radius: 8px; margin-bottom: 30px;">
+  <style>
+    .nav-button {
+      color: #0056b3; 
+      text-decoration: none; 
+      font-weight: bold; 
+      padding: 5px 10px;
+    }
+    .nav-button:hover {
+      text-decoration: underline;
+      color: #003d80;
+    }
+  </style>
+  
+  <a class="nav-button" href="{{ '/' | relative_url }}">Home</a> | 
+  <a class="nav-button" href="{{ '/projects' | relative_url }}">Research</a> | 
+  <a class="nav-button" href="{{ '/reports' | relative_url }}">Lab Reports</a> | 
+  <a class="nav-button" href="{{ '/assets/Campagna_CV_2025.pdf' | relative_url }}" target="_blank">CV</a>
 </div>
 
 Hello, I'm Thomas Campagna! I am an undergraduate Physics and Math student at Austin Peay State University. I am an aspiring Computational Physicist specializing in Photonics and Environmental Physics. I have a particular interest in studying climate physics and how it relates to sustainable energy.
@@ -22,7 +33,7 @@ We focus on 5 methods, their accuracy and pedagogical value for undergraduate ph
 
 <img width="883" alt="Screenshot 2025-12-22 at 4 13 10 PM" src="https://github.com/user-attachments/assets/a1b161fd-f87d-41e4-8685-dfb5d922df1d" />
 
-<table align='center', style='background-color: E7F9FE'>
+<table style='align: center; background-color: #E7FBFE'>
   <tr>
     <th>Fig. 1: This figure shows a plot from our poster presentation on October 30th, 2025 comparing the 5 methods determined index's with the Sellmeier Equation. This plot does not include our most recent data for RAE.</th>
   </tr>
@@ -33,7 +44,7 @@ Since November 2025, I have taken on an independent research project to build a 
 Current progress: This simulator has recently passed the proof-of-concept phase and is moving on to further development.
 
 <img width="640" alt="temperature_result" src="https://github.com/user-attachments/assets/8335d10a-f222-475d-8fde-8c1e0b626a56" />
-<table style='align: center; background-color: E7F9FE'>
+<table style='align: center; background-color: #E7FBFE'>
   <tr>
     <th>Fig. 2: 2D temperature graph, high-fidelity only model.</th>
   </tr>
