@@ -1,12 +1,12 @@
-<div style="text-align: center; background-color: #E7F9FE; padding: 20px; border: 2px solid #b2d8e5; border-radius: 8px; margin-bottom: 30px;">
+<div style="text-align: center; background-color: #2e353d; padding: 20px; border: 2px solid #b2d8e5; border-radius: 8px; margin-bottom: 30px;">
   
-  <a href="{{ '/' | relative_url }}" style="background-color: white; color: #0056b3; border: 1px solid #b2d8e5; border-radius: 5px; padding: 8px 15px; text-decoration: none; font-weight: bold; margin: 0 5px; display: inline-block;">Home</a>
+  <a href="{{ '/' | relative_url }}" style="background-color: white; color: #4a5568; border: 1px solid #b2d8e5; border-radius: 5px; padding: 8px 15px; text-decoration: none; font-weight: bold; margin: 0 5px; display: inline-block;">Home</a>
   
-  <a href="{{ '/projects' | relative_url }}" style="background-color: white; color: #0056b3; border: 1px solid #b2d8e5; border-radius: 5px; padding: 8px 15px; text-decoration: none; font-weight: bold; margin: 0 5px; display: inline-block;">Research</a>
+  <a href="{{ '/projects' | relative_url }}" style="background-color: white; color: #4a5568; border: 1px solid #b2d8e5; border-radius: 5px; padding: 8px 15px; text-decoration: none; font-weight: bold; margin: 0 5px; display: inline-block;">Research</a>
   
-  <a href="{{ '/reports' | relative_url }}" style="background-color: white; color: #0056b3; border: 1px solid #b2d8e5; border-radius: 5px; padding: 8px 15px; text-decoration: none; font-weight: bold; margin: 0 5px; display: inline-block;">Lab Reports</a>
+  <a href="{{ '/reports' | relative_url }}" style="background-color: white; color: #4a5568; border: 1px solid #b2d8e5; border-radius: 5px; padding: 8px 15px; text-decoration: none; font-weight: bold; margin: 0 5px; display: inline-block;">Lab Reports</a>
   
-  <a href="{{ '/assets/Campagna_CV_2025.pdf' | relative_url }}" target="_blank" style="background-color: white; color: #0056b3; border: 1px solid #b2d8e5; border-radius: 5px; padding: 8px 15px; text-decoration: none; font-weight: bold; margin: 0 5px; display: inline-block;">CV</a>
+  <a href="{{ '/assets/Campagna_CV_2025.pdf' | relative_url }}" target="_blank" style="background-color: white; color: #4a5568; border: 1px solid #b2d8e5; border-radius: 5px; padding: 8px 15px; text-decoration: none; font-weight: bold; margin: 0 5px; display: inline-block;">CV</a>
 
 </div>
 
