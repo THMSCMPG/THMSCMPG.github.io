@@ -50,5 +50,10 @@ Current progress: This simulator has recently passed the proof-of-concept phase 
 - This poster was completed as a literature review
 - Presented at the 2025 Physics Symposium at Austin Peay State University
 
+### 🔧 Featured Project: CircuitNotes
+I have developed a comprehensive notes page for electronics and Arduino circuits.
+
+<a href="https://thmscmpg.github.io/CircuitNotes/" style="display: inline-block; padding: 12px 24px; background: #10b981; color: white; border-radius: 8px; font-weight: bold; text-decoration: none;">Explore CircuitNotes →</a>
+
 Connect with Me:
 - Email: thmscmpgn@gmail.com
