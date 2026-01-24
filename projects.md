@@ -1,25 +1,7 @@
-<div style="background-color: #2e353d; padding: 15px; border-radius: 8px; margin-bottom: 30px;">
-  <table style="width: 100%; border-collapse: separate; border-spacing: 10px 0;">
-    <tr>
-      <td style="background-color: #4a5568; border-radius: 5px; text-align: center; padding: 0;">
-        <a href="{{ '/' | relative_url }}" style="color: white; text-decoration: none; display: block; padding: 10px; font-family: sans-serif;">Home</a>
-      </td>
-      <td style="background-color: #4a5568; border-radius: 5px; text-align: center; padding: 0;">
-        <a href="{{ '/projects' | relative_url }}" style="color: white; text-decoration: none; display: block; padding: 10px; font-family: sans-serif;">Research</a>
-      </td>
-      <td style="background-color: #4a5568; border-radius: 5px; text-align: center; padding: 0;">
-        <a href="{{ '/reports' | relative_url }}" style="color: white; text-decoration: none; display: block; padding: 10px; font-family: sans-serif;">Lab Reports</a>
-      </td>
-      <td style="background-color: #4a5568; border-radius: 5px; text-align: center; padding: 0;">
-        <a href="{{ '/assets/Campagna_CV_2025.pdf' | relative_url }}" target="_blank" style="color: white; text-decoration: none; display: block; padding: 10px; font-family: sans-serif;">CV</a>
-      </td>
-    </tr>
-  </table>
-</div>
-
-
-# My Research Projects
-
+---
+layout: default
+title: Research Projects
+---
 ## Comparing 5 Methods to Determine the Index of Refraction of a Glass Prism
 **The Objective:** This research evaluates the precision and pedagogical utility of five distinct experimental methodologies for determining the refractive index of optical glass. We quantify the systematic uncertainties inherent in each approach. A central component of this study involves fitting experimental dispersion data to the Sellmeier Equation, allowing for a robust comparison against theoretical values. This work serves not only to validate high-precision optical techniques but also to identify the most effective methodologies for undergraduate-level optics.
 
