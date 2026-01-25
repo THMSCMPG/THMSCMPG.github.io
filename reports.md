@@ -9,7 +9,9 @@ title: Lab Reports
 * **Summary:** This study experimentally determined the focal length of a converging thin lens using six independent optical methods: object-at-infinity, thin-lens graphical analysis, Lensmaker's Formula, Bessel's Method, Laser Speckle Method, and autocollimation. The results were benchmarked against a vendor-specified 75 mm focal length. Findings demonstrated that collimation-based techniques, specifically the Laser Speckle Method (f=74.0 mm, 1.35% difference), significantly outperformed direct distance measurements by minimizing systematic uncertainties.
 
 <div class="category-card">
-  <a href="{{ '/assets/reports/Determination of the Focal Length Campagna.pdf' | relative_url }}" class="btn-link">Read Full Report (PDF)</a>
+  <a href="{{ '/assets/reports/Determination of the Focal Length Campagna.pdf' | relative_url }}"
+    target="_blank" rel="noopener noreferrer"
+    class="btn-link">Read Full Report (PDF)</a>
 </div>
 
 ---
