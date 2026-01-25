@@ -65,6 +65,7 @@ html, body {
     display: flex;
     flex-direction: column; /* Stack navbar top, dropdown bottom */
     gap: 10px;
+    overflow: visible;
     overflow-x: hidden;
 }
 
@@ -142,6 +143,11 @@ img {
     top: 100%;          /* Sits directly below the icon */
     left: 50%;          /* Move left edge to the middle of the icon */
     transform: translateX(-50%); /* Shift back by half its own width */
+
+    height: auto !important;      /* Ensures it expands to fit all links */
+    max-height: none !important;  /* Removes any height restrictions */
+    visibility: visible !important; 
+    opacity: 1 !important;
     
     background-color: #1e293b; /* Dark Slate */
     min-width: 220px;
