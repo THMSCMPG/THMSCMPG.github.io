@@ -18,14 +18,6 @@ body {
 
 .container { max-width: 1000px; margin: 0 auto; padding: 0 20px; }
 
-/* Navigation */
-.navbar { background: white; padding: 1.2rem 0; border-bottom: 1px solid var(--border); }
-.navbar .container { display: flex; justify-content: space-between; align-items: center; }
-.logo { font-weight: 800; font-size: 1.2rem; text-decoration: none; color: var(--dark); letter-spacing: -0.05em; }
-.nav-links { list-style: none; display: flex; gap: 20px; margin: 0; }
-.nav-links a { text-decoration: none; color: var(--text-light); font-weight: 500; font-size: 0.95rem; transition: 0.2s; }
-.nav-links a:hover { color: var(--primary); }
-
 /* Profile Hero */
 .hero { background: white; padding: 100px 0 60px; border-bottom: 1px solid var(--border); text-align: center; }
 .profile-pic { width: 120px; height: 120px; border-radius: 50%; border: 4px solid var(--primary); margin-bottom: 20px; }
@@ -53,6 +45,103 @@ body {
 .category-card:hover { transform: translateY(-4px); box-shadow: 0 12px 24px -10px rgba(0,0,0,0.1); }
 .category-card h3 { margin: 0 0 20px 0; color: var(--dark); font-size: 1.4rem; display: flex; align-items: center; gap: 10px; }
 .category-card i { color: var(--primary); }
+
+/* --- Global Navbar Styling --- */
+.navbar {
+    background: #1e293b; /* Slate Dark */
+    border-bottom: 3px solid #10b981; /* Emerald */
+    padding: 10px 20px;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    display: flex;
+    flex-direction: column; /* Stack navbar top, dropdown bottom */
+    gap: 10px;
+}
+
+.navbar .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    color: #10b981 !important;
+    font-weight: 800;
+    font-size: 1.3rem;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* --- Nav Links --- */
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-links a {
+    color: #f8fafc !important;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.9rem;
+    transition: 0.2s;
+}
+
+.nav-links a:hover {
+    color: #10b981 !important;
+}
+
+/* --- Dropdown Wrapper (The "Jump to" Section) --- */
+.dropdown-wrapper {
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end; /* Aligns to the right */
+    gap: 10px;
+    padding-top: 5px;
+    border-top: 1px solid #334155;
+}
+
+.dropdown-wrapper label {
+    color: #94a3b8;
+    font-size: 0.75rem;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+#page-select {
+    background: #334155;
+    color: white;
+    border: 1px solid #475569;
+    border-radius: 4px;
+    padding: 5px 10px;
+    font-size: 0.85rem;
+    cursor: pointer;
+}
+
+/* --- Download Button (Ensuring it's a Block) --- */
+.download-btn {
+    display: inline-flex !important;
+    align-items: center;
+    background: #10b981 !important;
+    color: white !important;
+    padding: 12px 20px !important;
+    border-radius: 6px !important;
+    text-decoration: none !important;
+    font-weight: bold !important;
+    margin: 20px 0 !important;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
 
 /* Links & Buttons */
 .link-group { display: flex; flex-direction: column; gap: 12px; }
