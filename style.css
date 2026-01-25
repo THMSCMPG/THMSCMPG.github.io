@@ -114,15 +114,15 @@ img {
     color: #10b981 !important;
 }
 
-/* Highlights the CV link specifically */
-.nav-links li a[href*="CV.pdf"] {
+/* Highlights some links specifically */
+.nav-links li a[href*="'master-reference.html' 'CV.pdf' 'CircuitNotes/'"] {
     border: 1px solid var(--primary);
     padding: 5px 12px;
     border-radius: 4px;
     background: rgba(16, 185, 129, 0.1); /* Very faint emerald tint */
 }
 
-.nav-links li a[href*="CV.pdf"]:hover {
+.nav-links li a[href*="'master-reference.html' 'CV.pdf' 'CircuitNotes/'"]:hover {
     background: var(--primary);
     color: var(--dark) !important; /* Swaps to dark text on green background */
 }
