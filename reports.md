@@ -22,7 +22,9 @@ title: Lab Reports
 * **Summary:** To characterize spatial light distribution, this project employed the knife-edge scanning method to measure the beam radius (w) of a laser. By fitting the integrated intensity profile (G(x)) to a complementary error function (erfc), the true Gaussian spatial intensity profile (g(x)) was derived. This methodology was used to verify the 5x magnification factor of a Galilean telescope beam expander.
 
 <div class="category-card">
-  <a href="{{ '/assets/reports/Precision Laser Beam Profiling Campagna.pdf' | relative_url }}" class="btn-link">Read Full Report (PDF)</a>
+  <a href="{{ '/assets/reports/Precision Laser Beam Profiling Campagna.pdf' | relative_url }}" 
+    target="_blank" rel="noopener noreferrer"
+    class="btn-link">Read Full Report (PDF)</a>
 </div>
 
 ---
@@ -33,7 +35,9 @@ title: Lab Reports
 * **Summary:** This experiment involved building and calibrating a 23-turn coil probe to map the axial magnetic field of a non-ideal, 3,400-turn solenoid. The probe was calibrated using the approximately uniform fields of Helmholtz coils via Faraday induction. Measured data were compared against three theoretical models—infinite solenoid, circular-coil approximation, and thin, finite length solenoid—to analyze the effects of solenoid geometry and field fringing.
 
 <div class="category-card">
-    <a href="{{ '/assets/reports/Mapping the Magnetic Field Campagna.pdf' | relative_url }}" class="btn-link">Read Full Report (PDF)</a>
+    <a href="{{ '/assets/reports/Mapping the Magnetic Field Campagna.pdf' | relative_url }}" 
+      target="_blank" rel="noopener noreferrer"
+      class="btn-link">Read Full Report (PDF)</a>
 </div>
 
 ---
@@ -46,5 +50,7 @@ title: Lab Reports
 * **Summary:** This project explored the principles of birefringence and retardance by creating "Polages" (polarization paintings). Using a JAZ Spectrometer and a polarization gate, I verified that phase retardance (δ) is inversely proportional to wavelength (λ). The research confirmed the complementary color relationship between "Open Gate" (parallel) and "Closed Gate" (perpendicular) polarizer configurations, validating the computational process of converting raw spectral data into sRGB colors.
 
 <div class="category-card">
-    <a href="{{ '/assets/reports/Final Optics Project.pdf' | relative_url }}" class="btn-link">Read Full Report (PDF)</a>
+    <a href="{{ '/assets/reports/Final Optics Project.pdf' | relative_url }}" 
+      target="_blank" rel="noopener noreferrer"
+      class="btn-link">Read Full Report (PDF)</a>
 </div>
