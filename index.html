@@ -60,13 +60,13 @@ title: Home
         <h3>Presentations</h3>
         
         <h5>Comparing Five Methods for Determining the Refractive Index of a Glass Prism Using a Multi-Wavelength Laser and a Versatile Optical Setup</h5>
-        <img width="900" alt="SPS Con 2025 pptx" src="https://github.com/user-attachments/assets/ea566d68-ee3e-4cb6-85b4-e8d7005cfe8d" />
+        <img width="900" alt="SPS Con 2025 pptx" src="https://github.com/user-attachments/assets/ea566d68-ee3e-4cb6-85b4-e8d7005cfe8d" style="display: block; margin: 20px auto;" />
         <ul style="margin-bottom: 30px;">
             <li>Presented at the 2025 Society of Physics Students Conference in Denver Colorado</li>
         </ul>
 
         <h5>Neutrino Oscillations: Reassessing the Standard Model</h5>
-        <img width="900" alt="Poster Draft" src="https://github.com/user-attachments/assets/8079545d-742c-45dc-b942-3ba0315d291e" />
+        <img width="900" alt="Poster Draft" src="https://github.com/user-attachments/assets/8079545d-742c-45dc-b942-3ba0315d291e" style="display: block; margin: 20px auto;" />
         <ul>
             <li>This poster was completed as a literature review</li>
             <li>Presented at the 2025 Physics Symposium at Austin Peay State University</li>
@@ -80,7 +80,13 @@ title: Home
     </div>
 
     <footer style="margin-top: 50px; padding-top: 20px; border-top: 1px solid var(--border);">
-        <p><strong>Connect with Me:</strong></p>
-        <p>Email: <a href="mailto:thmscmpgn@gmail.com">thmscmpgn@gmail.com</a></p>
+        <p>
+          &copy; <span id="year"></span> Thomas Campagna. 
+          Licensed under the <a href="/LICENSE">MIT License</a>.
+        </p>
     </footer>
+
+    <script>
+      document.getElementById("year").textContent = new Date().getFullYear();
+    </script>
 </div>
