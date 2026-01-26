@@ -9,6 +9,17 @@
 </head>
 <body>
 
+    <button class="menu-btn" onclick="toggleSidebar()">MENU &#9662;</button>
+
+    <div id="mySidebar" class="sidebar">
+        <a href="javascript:void(0)" class="close-btn" onclick="toggleSidebar()">&times;</a>
+        <a href="/">Home</a>
+        <a href="/projects.html">Research</a>
+        <a href="/reports.html">Lab Reports</a>
+        <a href="/assets/Campagna_CV_2025.pdf">CV</a>
+        <a href="/CircuitNotes/">CircuitNotes</a>
+    </div>
+    
     <nav class="navbar">
         <div class="container">
             <a href="https://github.com/THMSCMPG/" class="logo"><i class="fas fa-bolt-lightning"></i> THMSCMPG</a>
@@ -55,5 +66,16 @@
         <li><a href="https://github.com/THMSCMPG"><i class="fab fa-github"></i> GitHub</a></li>
     </footer>
 
+    <script>
+        function toggleSidebar() {
+            const sidebar = document.getElementById("mySidebar");
+            // Check if the sidebar is open (250px) or closed (0)
+            if (sidebar.style.width === "250px") {
+                sidebar.style.width = "0";
+            } else {
+                sidebar.style.width = "250px";
+            }
+        }
+    </script>
 </body>
 </html>
