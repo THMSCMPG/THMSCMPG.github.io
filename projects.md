@@ -2,6 +2,8 @@
 layout: default
 title: Research Projects
 ---
+###### My work focuses on experimental and computational physics, with an emphasis on optics, radiation transport, and scientific modeling.
+
 ## Comparing 5 Methods to Determine the Index of Refraction of a Glass Prism
 **The Objective:** This research evaluates the precision and pedagogical utility of five distinct experimental methodologies for determining the refractive index of optical glass. We quantify the systematic uncertainties inherent in each approach. A central component of this study involves fitting experimental dispersion data to the Sellmeier Equation, allowing for a robust comparison against theoretical values. This work serves not only to validate high-precision optical techniques but also to identify the most effective methodologies for undergraduate-level optics.
 
