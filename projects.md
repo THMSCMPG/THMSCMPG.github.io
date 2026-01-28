@@ -28,7 +28,7 @@ It displays an empirical relationship between the index of refraction and the wa
 
 **Technical Stack:** The simulation's program is written in Fortran 90 and OpenMP. I take advantage of Monte-Carlo simulations, the diffusion approximation, the poisson approximation, and coarse discretization.
 
-**Current Progress:** As of December 2025, the proof of concept has been finalized and I am moving forwards with optimization. Check out the repository for [AURA-MF](https://github.com/THMSCMPG/AURA-MF/){:target="_blank"}
+**Current Progress:** As of December 2025, the proof of concept has been finalized and I am moving forwards with optimization. Check out the repository for [AURA-MF](https://github.com/THMSCMPG/AURA-MF){:target="_blank"}
 
 
 <img alt="space_time_3d_surface" src="https://github.com/user-attachments/assets/6463f09c-22e5-47a2-8dfa-a9c4c0bbf42f" style="max-width: 100%; height: auto; display: block; align: center; margin: 20px auto;" />
