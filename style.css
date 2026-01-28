@@ -386,3 +386,69 @@ tr:nth-child(even) { background: var(--light); }
 /* --- Header Headings (Circuit Style) --- */
 h1.circuit-title { color: #2c3e50; border-bottom: 3px solid var(--primary); padding-bottom: 10px; text-align: center; }
 h2.circuit-head { color: #34495e; background: #ecf0f1; padding: 10px; border-left: 5px solid var(--primary); }
+
+/* Contact Form Styling */
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.contact-form input, 
+.contact-form textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    font-family: 'Inter', sans-serif;
+    font-size: 1rem;
+    transition: border-color 0.2s;
+}
+
+.contact-form input:focus, 
+.contact-form textarea:focus {
+    outline: none;
+    border-color: #10b981; /* Matches your Green CircuitNotes theme */
+    box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.1);
+}
+
+.submit-btn {
+    background: #10b981;
+    color: white;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    align-self: flex-start;
+}
+
+.submit-btn:hover {
+    background: #059669;
+}
+
+.submit-btn:disabled {
+    background: #94a3b8;
+    cursor: not-allowed;
+}
+
+#formResponse {
+    margin-top: 15px;
+    padding: 10px;
+    border-radius: 6px;
+    font-size: 0.9rem;
+}
+
+.success-msg {
+    background: #dcfce7;
+    color: #166534;
+    border: 1px solid #bbf7d0;
+}
+
+.error-msg {
+    background: #fee2e2;
+    color: #991b1b;
+    border: 1px solid #fecaca;
+}
