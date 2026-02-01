@@ -288,7 +288,7 @@
             // Define listener for the response
             const handleResponse = (event) => {
                 // Security check
-                if (event.origin !== window.location.origin) return;
+                if (!event.origin.includes('thmscmpg.github.io')) return;
                 // Only handle the message meant for this specific request ID
                 if (!event.data.id || event.data.id !== requestId) return;
 
