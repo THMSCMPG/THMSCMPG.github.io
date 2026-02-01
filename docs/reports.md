@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: Profile
 title: Lab Reports
 ---
 
