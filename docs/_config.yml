@@ -1,13 +1,14 @@
+# Site Metadata
 name: ""
 title: Thomas Campagna
 email: thmscmpgn@gmail.com
-description: >- # This shows up in Google search results
+description: >-
   Undergraduate Physics & Math Student at Austin Peay State University. 
   Aspiring Computational Physicist specializing in Photonics and Environmental Physics.
-
+  
 # Site Settings
 url: "https://THMSCMPG.github.io"
-baseurl: ""
+baseurl: ""  # Empty for root site
 
 # Build Settings
 markdown: kramdown
@@ -16,18 +17,18 @@ plugins:
   - jekyll-seo-tag
   - jekyll-remote-theme
 
-remote_theme: THMSCMPG/backend-hub
+# Remote Theme - ADD @main
+remote_theme: THMSCMPG/backend-hub@main
+
+# Sass Configuration
 sass:
   sass_dir: _sass
+  style: compressed
 
+# Kramdown Configuration
 kramdown:
   math_engine: mathjax
-  input: GFM # GitHub Flavored Markdown
+  input: GFM
   syntax_highlighter: rouge
 
 favicon: /assets/favicon.png
-
-# Navigation
-header_pages:
-  - README.md
-  - projects.md
