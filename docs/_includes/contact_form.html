@@ -288,214 +288,94 @@
 (function() {
     'use strict';
     
-    // Configuration
     const CONFIG = {
-        // We no longer need the API_URL here, the Bridge handles it.
         MAX_MESSAGE_LENGTH: 5000,
         MIN_MESSAGE_LENGTH: 10,
-        TIMEOUT: 45000 
+        BRIDGE_ID: 'backend-bridge',
+        BRIDGE_ORIGIN: 'https://thmscmpg.github.io'
     };
-    
-    // --- BRIDGE COMMUNICATION FUNCTION ---
-    function sendToBridge(payload) {
+
+    const form = document.getElementById('contactForm');
+    const submitBtn = document.getElementById('submitBtn');
+    const btnText = submitBtn.querySelector('.btn-text');
+    const responseDiv = document.getElementById('formResponse');
+
+    // --- ASYNC BRIDGE HANDLER ---
+    async function postToQueue(payload) {
         return new Promise((resolve, reject) => {
-            const iframe = document.getElementById('backend-bridge');
-            if (!iframe) {
-                reject(new Error("Bridge iframe not found"));
-                return;
-            }
+            const iframe = document.getElementById(CONFIG.BRIDGE_ID);
+            if (!iframe) return reject("System Offline: Bridge missing");
 
-            const requestId = Date.now(); // Unique ID for this specific request
+            const requestId = `req_${Date.now()}`;
+            
+            // Listen for ACKNOWLEDGEMENT, not the final email result
+            const handleAck = (event) => {
+                if (!event.origin.includes('github.io')) return;
+                if (event.data.id !== requestId) return;
 
-            // Define listener for the response
-            const handleResponse = (event) => {
-                // Security check
-                if (!event.origin.includes('thmscmpg.github.io')) return;
-                // Only handle the message meant for this specific request ID
-                if (!event.data.id || event.data.id !== requestId) return;
-
-                // Cleanup: Remove listener so it doesn't pile up
-                window.removeEventListener('message', handleResponse);
-
-                if (event.data.status === 'success') {
-                    resolve(event.data.data);
+                window.removeEventListener('message', handleAck);
+                
+                // If the bridge says "Received", we consider it a success for the UI
+                if (event.data.status === 'received' || event.data.status === 'success') {
+                    resolve({ message: "Message queued for delivery!" });
                 } else {
-                    reject(new Error(event.data.error));
+                    reject(event.data.error || "Queue failed");
                 }
             };
 
-            // Start listening
-            window.addEventListener('message', handleResponse);
+            window.addEventListener('message', handleAck);
 
-            // Send message to Iframe
+            // Send data to the bridge
             iframe.contentWindow.postMessage({ 
-                action: 'SUBMIT_CONTACT', 
+                action: 'ENQUEUE_CONTACT', 
                 id: requestId,
                 payload: payload 
             }, '*');
-            
-            // Safety timeout in case the bridge never replies
+
+            // Fast timeout: If bridge doesn't ACK in 5s, something is wrong
             setTimeout(() => {
-                window.removeEventListener('message', handleResponse);
-                reject(new Error("Request timed out - Bridge did not respond"));
-            }, CONFIG.TIMEOUT);
+                window.removeEventListener('message', handleAck);
+                reject("Connection timeout");
+            }, 5000);
         });
     }
 
-    // --- FORM LOGIC (Unchanged mostly, except the submit handler) ---
-    
-    const form = document.getElementById('contactForm');
-    const nameInput = document.getElementById('contactName');
-    const emailInput = document.getElementById('contactEmail');
-    const messageInput = document.getElementById('contactMessage');
-    const submitBtn = document.getElementById('submitBtn');
-    const responseDiv = document.getElementById('formResponse');
-    const charCount = document.getElementById('charCount');
-    
-    // ... [Validation Helpers match your original code] ...
-    const validators = {
-        name: (value) => (!value || value.trim().length < 2) ? 'Name must be at least 2 characters' : (value.length > 100 ? 'Name is too long' : null),
-        email: (value) => (!value || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)) ? 'Invalid email' : (value.length > 150 ? 'Email is too long' : null),
-        message: (value) => (!value || value.trim().length < CONFIG.MIN_MESSAGE_LENGTH) ? `Message too short` : (value.length > CONFIG.MAX_MESSAGE_LENGTH ? `Message too long` : null)
-    };
-
-    function showError(inputId, message) {
-        const input = document.getElementById(inputId);
-        const errorSpan = document.getElementById(`${inputId.replace('contact', '').toLowerCase()}Error`);
-        if (input && errorSpan) {
-            input.classList.add('error');
-            input.classList.remove('success');
-            errorSpan.textContent = message;
-            errorSpan.classList.add('visible');
-        }
-    }
-
-    function clearError(inputId) {
-        const input = document.getElementById(inputId);
-        const errorSpan = document.getElementById(`${inputId.replace('contact', '').toLowerCase()}Error`);
-        if (input && errorSpan) {
-            input.classList.remove('error');
-            input.classList.add('success');
-            errorSpan.textContent = '';
-            errorSpan.classList.remove('visible');
-        }
-    }
-
-    function validateField(fieldName, value) {
-        const error = validators[fieldName](value);
-        const inputId = `contact${fieldName.charAt(0).toUpperCase() + fieldName.slice(1)}`;
-        if (error) { showError(inputId, error); return false; }
-        else { clearError(inputId); return true; }
-    }
-
-    // Event Listeners for validation
-    if (nameInput) nameInput.addEventListener('blur', () => validateField('name', nameInput.value));
-    if (emailInput) emailInput.addEventListener('blur', () => validateField('email', emailInput.value));
-    if (messageInput) {
-        messageInput.addEventListener('blur', () => validateField('message', messageInput.value));
-        messageInput.addEventListener('input', () => {
-            if (charCount) charCount.textContent = `${messageInput.value.length} / ${CONFIG.MAX_MESSAGE_LENGTH}`;
-        });
-    }
-
-    function showResponse(message, isSuccess) {
-        if (!responseDiv) return;
-        responseDiv.textContent = message;
-        responseDiv.className = `form-response visible ${isSuccess ? 'success-msg' : 'error-msg'}`;
-        if (isSuccess) setTimeout(() => responseDiv.classList.remove('visible'), 5000);
-    }
-    
-    async function handleContactSubmit(event) {
-    event.preventDefault();
-    const form = event.target;
-    const button = form.querySelector('button[type="submit"]');
-    const statusDiv = document.getElementById('form-status');
-
-    // 1. Enter "Loading" State
-    button.disabled = true;
-    button.innerHTML = '<span class="spinner"></span> Sending...';
-    statusDiv.textContent = '';
-
-    const formData = {
-        name: document.getElementById('name').value,
-        email: document.getElementById('email').value,
-        message: document.getElementById('message').value
-    };
-
-    try {
-        const response = await fetch(`${CONFIG.API_BASE_URL}/api/contact`, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(formData)
-        });
-
-        const result = await response.json();
-
-        if (response.ok) {
-            // 2. Success State
-            button.innerHTML = '✓ Sent';
-            button.style.backgroundColor = '#4CAF50';
-            statusDiv.style.color = '#4CAF50';
-            statusDiv.textContent = 'Success! Your message is being processed.';
-            form.reset();
-        } else {
-            throw new Error(result.message || 'Server error');
-        }
-    } catch (error) {
-        // 3. Error State
-        button.disabled = false;
-        button.innerHTML = 'Try Again';
-        statusDiv.style.color = '#F44336';
-        statusDiv.textContent = 'Error: ' + error.message;
-    }
-}
-    
-    // --- NEW SUBMIT HANDLER ---
+    // --- FORM SUBMISSION ---
     if (form) {
         form.addEventListener('submit', async (e) => {
             e.preventDefault();
-            if (responseDiv) responseDiv.classList.remove('visible');
             
-            // Validate all
-            const v1 = validateField('name', nameInput.value);
-            const v2 = validateField('email', emailInput.value);
-            const v3 = validateField('message', messageInput.value);
-            if (!v1 || !v2 || !v3) { showResponse('Please fix errors', false); return; }
-            
-            // UI Loading State
+            // 1. Instant UI Feedback
             submitBtn.disabled = true;
-            const btnText = submitBtn.querySelector('.btn-text');
-            const originalText = btnText.textContent;
-            btnText.textContent = 'Sending...';
-            
-            // Prepare Data
-            const formData = {
-                name: nameInput.value.trim(),
-                email: emailInput.value.trim(),
-                message: messageInput.value.trim(),
-                website_hp: document.getElementById('website_hp')?.value || ''
-            };
-            
-            try {
-                // !!! HERE IS THE CHANGE: Use Bridge instead of Fetch !!!
-                const data = await sendToBridge(formData);
-                
-                // Success Handling
-                showResponse(data.message || 'Message sent successfully!', true);
-                form.reset();
-                [nameInput, emailInput, messageInput].forEach(i => i.classList.remove('success'));
-                if (charCount) charCount.textContent = '0 / 5000';
+            btnText.textContent = 'Processing...';
+            responseDiv.classList.remove('visible');
 
-            } catch (error) {
-                console.error('Bridge Error:', error);
-                showResponse(error.message || 'Failed to send message via bridge.', false);
-            } finally {
+            // 2. Data Prep
+            const formData = {
+                name: document.getElementById('contactName').value.trim(),
+                email: document.getElementById('contactEmail').value.trim(),
+                message: document.getElementById('contactMessage').value.trim(),
+                ts: new Date().toISOString()
+            };
+
+            try {
+                // 3. The Async Call
+                const result = await postToQueue(formData);
+                
+                // 4. Instant Success (Don't wait for the email to actually send!)
+                responseDiv.textContent = "✓ Success! Your message is in the queue.";
+                responseDiv.className = "form-response visible success-msg";
+                form.reset();
+                document.getElementById('charCount').textContent = '0 / 5000';
+                
+            } catch (err) {
+                responseDiv.textContent = `❌ ${err}`;
+                responseDiv.className = "form-response visible error-msg";
                 submitBtn.disabled = false;
-                btnText.textContent = originalText;
+            } finally {
+                btnText.textContent = 'Send Message';
             }
         });
     }
-    
-    console.log('✓ Contact form initialized with Bridge');
 })();
 </script>
