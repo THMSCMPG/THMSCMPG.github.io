@@ -378,29 +378,29 @@ tr:nth-child(even) { background: var(--light); }
 
 /* --- Footer --- */
 .footer { 
-            text-align: center; 
-            padding: 60px 20px; 
-            background: var(--dark-muted); /* Dark background to match navbar */
-            color: #94a3b8;               /* Muted slate text */
-            margin-top: 60px;
-            border-top: 3px solid var(--primary); /* Emerald accent line */
-        }
+    text-align: center; 
+    padding: 60px 20px; 
+    background: var(--dark-muted); /* Dark background to match navbar */
+    color: #94a3b8;               /* Muted slate text */
+    margin-top: 60px;
+    border-top: 3px solid var(--primary); /* Emerald accent line */
+}
             
-            .footer p {
-                margin-bottom: 8px;
-                color: inherit; /* Ensures it uses the muted slate color */
-            }
+.footer p {
+    margin-bottom: 8px;
+    color: inherit; /* Ensures it uses the muted slate color */
+}
             
-            .footer a {
-                color: var(--primary); /* Emerald links */
-                text-decoration: none;
-                font-weight: 600;
-            }
+.footer a {
+    color: var(--primary); /* Emerald links */
+    text-decoration: none;
+    font-weight: 600;
+}
             
-            .footer a:hover {
-                text-decoration: underline;
-                color: white;
-            }
+.footer a:hover {
+    text-decoration: underline;
+    color: white;
+}
 
 /* --- Header Headings (Circuit Style) --- */
 h1.circuit-title { color: #2c3e50; border-bottom: 3px solid var(--primary); padding-bottom: 10px; text-align: center; }
