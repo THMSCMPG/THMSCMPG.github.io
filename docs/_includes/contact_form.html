@@ -561,6 +561,18 @@
             }
         });
     }
+    const bridgeFrame = document.getElementById('backend-bridge');
+
+    bridgeFrame.onload = function() {
+        console.log("Bridge Iframe is fully loaded and ready.");
+        bridgeFrame.contentWindow.postMessage({ action: 'PING', id: 'init' }, '*');
+    };
+    
+    window.addEventListener('message', (e) => {
+        if (e.data.action === 'PONG') {
+            console.log("✅ Connection Verified: Hub is talking back!");
+        }
+    });
     
     console.log('✓ Contact form initialized with Bridge');
 })();
