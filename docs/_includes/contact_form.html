@@ -372,10 +372,6 @@
                 showResponse('Success! Your message has been routed.', true);
                 form.reset();
                 if (charCount) charCount.textContent = '0 / 5000';
-                
-            } catch (error) {
-                console.error('Bridge Hub Error:', error);
-                showResponse('Bridge Error: ' + error.message, false);
             } finally {
                 submitBtn.disabled = false;
                 btnText.textContent = originalText;
