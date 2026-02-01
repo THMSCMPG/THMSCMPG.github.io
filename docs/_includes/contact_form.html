@@ -346,35 +346,78 @@
         form.addEventListener('submit', async (e) => {
             e.preventDefault();
             
-            // Validate fields
+            // 1. Define 'form' locally so it's always found
+            const currentForm = e.target;
+            const submitBtn = currentForm.querySelector('button[type="submit"]');
+            const btnText = submitBtn.querySelector('.btn-text');
+            const originalText = btnText ? btnText.textContent : 'Send Message';
+            
+            // 2. Validate all fields before doing anything
             const v1 = validateField('name', nameInput.value);
             const v2 = validateField('email', emailInput.value);
             const v3 = validateField('message', messageInput.value);
-            if (!v1 || !v2 || !v3) return;
-
-            // UI Feedback
+            
+            if (!v1 || !v2 || !v3) {
+                showResponse('Please fix the errors above', false);
+                return;
+            }
+    
+            // 3. UI Loading State
             submitBtn.disabled = true;
-            const btnText = submitBtn.querySelector('.btn-text');
-            const originalText = btnText.textContent;
-            btnText.textContent = 'Routing...';
-
+            if (btnText) btnText.textContent = 'Routing...';
+    
+            // 4. Prepare Data
             const formData = {
                 name: nameInput.value.trim(),
                 email: emailInput.value.trim(),
                 message: messageInput.value.trim(),
                 website_hp: document.getElementById('website_hp')?.value || ''
             };
-
+    
+            // 5. The Fetch and Bridge Logic
             try {
-                // This one call triggers the Hub counter AND sends the data to your backend
-                await sendToBridge(formData);
-                
-                showResponse('Success! Your message has been routed.', true);
-                form.reset();
-                if (charCount) charCount.textContent = '0 / 5000';
+                // First: Log the attempt to the Hub immediately
+                const bridge = document.getElementById('backend-bridge');
+                if (bridge) {
+                    bridge.contentWindow.postMessage({
+                        action: 'SUBMIT_CONTACT',
+                        id: `TRY-${Date.now()}`,
+                        payload: { info: 'Contact attempt started' }
+                    }, '*');
+                }
+    
+                // Second: The Actual Backend Request
+                const response = await fetch('https://aura-mf-backend.onrender.com/api/contact', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(formData)
+                });
+    
+                if (response.ok) {
+                    const confirmation = await response.json();
+                    
+                    // Success: Tell the Hub to tick +1
+                    if (bridge) {
+                        bridge.contentWindow.postMessage({
+                            action: 'RENDER_CONFIRMED', 
+                            id: confirmation.timestamp || Date.now()
+                        }, '*');
+                    }
+    
+                    showResponse('Success! Your message was routed.', true);
+                    currentForm.reset();
+                    if (charCount) charCount.textContent = '0 / 5000';
+                } else {
+                    throw new Error(`Server error: ${response.status}`);
+                }
+    
+            } catch (err) {
+                console.error('Submission Error:', err);
+                showResponse(err.message || 'Communication failed', false);
             } finally {
+                // Re-enable button
                 submitBtn.disabled = false;
-                btnText.textContent = originalText;
+                if (btnText) btnText.textContent = originalText;
             }
         });
     }
