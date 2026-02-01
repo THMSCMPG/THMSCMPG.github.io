@@ -1,5 +1,5 @@
 ---
-layout: profile
+layout: Profile
 title: Research Projects
 ---
 #### My work focuses on experimental and computational physics, with an emphasis on optics, radiation transport, and scientific modeling.
