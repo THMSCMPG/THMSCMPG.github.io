@@ -288,6 +288,14 @@
 (function() {
     'use strict';
     
+    const form = document.getElementById('contactForm');
+    const nameInput = document.getElementById('contactName');
+    const emailInput = document.getElementById('contactEmail');
+    const messageInput = document.getElementById('contactMessage');
+    const submitBtn = document.getElementById('submitBtn');
+    const responseDiv = document.getElementById('formResponse');
+    const charCount = document.getElementById('charCount');
+    
     // Configuration
     const CONFIG = {
         // We no longer need the API_URL here, the Bridge handles it.
