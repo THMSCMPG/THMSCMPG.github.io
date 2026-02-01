@@ -1,3 +1,10 @@
+# =============================================================================
+# THMSCMPG.GITHUB.IO - Main Site Configuration
+# =============================================================================
+# This is the root site at https://thmscmpg.github.io/
+# Other sites (CircuitNotes, AURA-MF) are subfolders with their own configs
+# =============================================================================
+
 # Site Metadata
 name: ""
 title: Thomas Campagna
@@ -5,30 +12,76 @@ email: thmscmpgn@gmail.com
 description: >-
   Undergraduate Physics & Math Student at Austin Peay State University. 
   Aspiring Computational Physicist specializing in Photonics and Environmental Physics.
-  
-# Site Settings
+author: Thomas Campagna
+lang: en-US
+timezone: America/Chicago
+
+# Deployment Settings
 url: "https://THMSCMPG.github.io"
 baseurl: ""  # Empty for root site
 
 # Build Settings
 markdown: kramdown
+highlighter: rouge
+permalink: pretty
+
+# Plugins
 plugins:
   - jekyll-feed
   - jekyll-seo-tag
+  - jekyll-sitemap
   - jekyll-remote-theme
 
-# Remote Theme - ADD @main
+# Remote Theme Configuration
 remote_theme: THMSCMPG/backend-hub@main
 
 # Sass Configuration
 sass:
   sass_dir: _sass
-  style: compressed
+  style: compressed  # Minified for production
+  sourcemap: never   # Disable for production
 
 # Kramdown Configuration
 kramdown:
-  math_engine: mathjax
   input: GFM
   syntax_highlighter: rouge
+  syntax_highlighter_opts:
+    block:
+      line_numbers: false
+    span:
+      line_numbers: false
 
+# SEO & Social
+social:
+  name: Thomas Campagna
+  links:
+    - https://github.com/THMSCMPG
+
+# Site Assets
 favicon: /assets/favicon.png
+
+# Exclude from processing
+exclude:
+  - README.md
+  - LICENSE
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor
+  - .git
+  - .gitignore
+  - .sass-cache
+  - package.json
+  - package-lock.json
+
+# Include dotfiles (if needed)
+include:
+  - .well-known
+
+# Defaults for front matter
+defaults:
+  - scope:
+      path: ""
+    values:
+      layout: "Profile"
+      author: "Thomas Campagna"
