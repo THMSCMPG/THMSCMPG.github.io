@@ -299,66 +299,90 @@
     // --- BRIDGE COMMUNICATION FUNCTION ---
     function sendToBridge(payload) {
         return new Promise((resolve, reject) => {
+            // MATCHED ID: Using 'backend-bridge' as defined in your HTML
             const iframe = document.getElementById('backend-bridge');
-            if (!iframe) {
-                reject(new Error("Bridge iframe not found"));
+            
+            if (!iframe || !iframe.contentWindow) {
+                reject(new Error("Bridge Hub not found or not loaded"));
                 return;
             }
 
-            const requestId = Date.now(); // Unique ID for this specific request
+            const requestId = `REQ-${Date.now()}`;
 
-            // Define listener for the response
+            // Response Listener
             const handleResponse = (event) => {
-                // Security check
-                if (!event.origin.includes('thmscmpg.github.io')) return;
-                // Only handle the message meant for this specific request ID
-                if (!event.data.id || event.data.id !== requestId) return;
+                // Ensure the message is from your Hub
+                if (!event.origin.includes('github.io') && !event.origin.includes('localhost')) return;
+                if (event.data.id !== requestId) return;
 
-                // Cleanup: Remove listener so it doesn't pile up
                 window.removeEventListener('message', handleResponse);
-
-                if (event.data.status === 'success') {
-                    resolve(event.data.data);
+                
+                if (event.data.status === 'success' || event.data.status === 'received') {
+                    resolve(event.data);
                 } else {
-                    reject(new Error(event.data.error));
+                    reject(new Error("Bridge reported a failure"));
                 }
             };
 
-            // Start listening
             window.addEventListener('message', handleResponse);
 
-            // Send message to Iframe
+            // The "Shout" across the bridge
             iframe.contentWindow.postMessage({ 
                 action: 'SUBMIT_CONTACT', 
-                id: requestId,
+                id: requestId, 
                 payload: payload 
             }, '*');
-            
-            // Safety timeout in case the bridge never replies
+
+            // Timeout after 10 seconds
             setTimeout(() => {
                 window.removeEventListener('message', handleResponse);
-                reject(new Error("Request timed out - Bridge did not respond"));
-            }, CONFIG.TIMEOUT);
+                reject(new Error("Bridge connection timed out"));
+            }, 10000);
         });
     }
 
-    // --- FORM LOGIC (Unchanged mostly, except the submit handler) ---
-    
-    const form = document.getElementById('contactForm');
-    const nameInput = document.getElementById('contactName');
-    const emailInput = document.getElementById('contactEmail');
-    const messageInput = document.getElementById('contactMessage');
-    const submitBtn = document.getElementById('submitBtn');
-    const responseDiv = document.getElementById('formResponse');
-    const charCount = document.getElementById('charCount');
-    
-    // ... [Validation Helpers match your original code] ...
-    const validators = {
-        name: (value) => (!value || value.trim().length < 2) ? 'Name must be at least 2 characters' : (value.length > 100 ? 'Name is too long' : null),
-        email: (value) => (!value || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)) ? 'Invalid email' : (value.length > 150 ? 'Email is too long' : null),
-        message: (value) => (!value || value.trim().length < CONFIG.MIN_MESSAGE_LENGTH) ? `Message too short` : (value.length > CONFIG.MAX_MESSAGE_LENGTH ? `Message too long` : null)
-    };
+    // --- 2. FORM SUBMISSION HANDLER ---
+    if (form) {
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            // Validate fields
+            const v1 = validateField('name', nameInput.value);
+            const v2 = validateField('email', emailInput.value);
+            const v3 = validateField('message', messageInput.value);
+            if (!v1 || !v2 || !v3) return;
 
+            // UI Feedback
+            submitBtn.disabled = true;
+            const btnText = submitBtn.querySelector('.btn-text');
+            const originalText = btnText.textContent;
+            btnText.textContent = 'Routing...';
+
+            const formData = {
+                name: nameInput.value.trim(),
+                email: emailInput.value.trim(),
+                message: messageInput.value.trim(),
+                website_hp: document.getElementById('website_hp')?.value || ''
+            };
+
+            try {
+                // This one call triggers the Hub counter AND sends the data to your backend
+                await sendToBridge(formData);
+                
+                showResponse('Success! Your message has been routed.', true);
+                form.reset();
+                if (charCount) charCount.textContent = '0 / 5000';
+                
+            } catch (error) {
+                console.error('Bridge Hub Error:', error);
+                showResponse('Bridge Error: ' + error.message, false);
+            } finally {
+                submitBtn.disabled = false;
+                btnText.textContent = originalText;
+            }
+        });
+    }
+    
     function showError(inputId, message) {
         const input = document.getElementById(inputId);
         const errorSpan = document.getElementById(`${inputId.replace('contact', '').toLowerCase()}Error`);
