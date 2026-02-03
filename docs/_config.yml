@@ -1,9 +1,3 @@
-# =============================================================================
-# THMSCMPG.GITHUB.IO - Main Site Configuration
-# =============================================================================
-# This is the root site at https://thmscmpg.github.io/
-# Other sites (CircuitNotes, AURA-MF) are subfolders with their own configs
-# =============================================================================
 
 # Site Metadata
 name: ""
