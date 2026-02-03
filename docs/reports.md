@@ -3,54 +3,66 @@ layout: Profile
 title: Lab Reports
 ---
 
-### Determination of the Focal Length of a Thin Lens Using Multiple Experimental Methods
-* **Course:** Optics
-* **Skills:** Error propagation, Gaussian optics analysis, experimental comparative methodology.
-* **Summary:** This study experimentally determined the focal length of a converging thin lens using six independent optical methods: object-at-infinity, thin-lens graphical analysis, Lensmaker's Formula, Bessel's Method, Laser Speckle Method, and autocollimation. The results were benchmarked against a vendor-specified 75 mm focal length. Findings demonstrated that collimation-based techniques, specifically the Laser Speckle Method (f=74.0 mm, 1.35% difference), significantly outperformed direct distance measurements by minimizing systematic uncertainties.
-
+<div class="content-area">
+<h2>Determination of the Focal Length of a Thin Lens Using Multiple Experimental Methods</h2>
+<div class="category-card">
+<ul>
+<li><strong>Course:</strong> Optics</li>
+<li><strong>Skills:</strong> Error propagation, Gaussian optics analysis, experimental comparative methodology.</li>
+<li><strong>Summary:</strong> This study experimentally determined the focal length of a converging thin lens using six independent optical methods: object-at-infinity, thin-lens graphical analysis, Lensmaker's Formula, Bessel's Method, Laser Speckle Method, and autocollimation. The results were benchmarked against a vendor-specified 75 mm focal length. Findings demonstrated that collimation-based techniques, specifically the Laser Speckle Method (f=74.0 mm, 1.35% difference), significantly outperformed direct distance measurements by minimizing systematic uncertainties.<li>
+<ul>
+</div>
 <div class="category-card">
   <a href="{{ '/portfolio/reports/Determination of the Focal Length Campagna.pdf' | relative_url }}"
     target="_blank" rel="noopener noreferrer"
     class="btn-link">Read Full Report (PDF)</a>
 </div>
-
+</div>
 ---
 
-### Precision Laser Beam Profiling: Using Optical Lenses and the Knife-Edge Method
-* **Course:** Optics
-* **Skills:** Error propagation, nonlinear curve fitting, Gaussian beam characterization.
-* **Summary:** To characterize spatial light distribution, this project employed the knife-edge scanning method to measure the beam radius (w) of a laser. By fitting the integrated intensity profile (G(x)) to a complementary error function (erfc), the true Gaussian spatial intensity profile (g(x)) was derived. This methodology was used to verify the 5x magnification factor of a Galilean telescope beam expander.
-
+<div class="content-area">
+<h2>Precision Laser Beam Profiling: Using Optical Lenses and the Knife-Edge Method</h2>
+<div class="category-card">
+<ul>
+<li><strong>Course:</strong> Optics</li>
+<li><strong>Skills:</strong> Error propagation, nonlinear curve fitting, Gaussian beam characterization.</li>
+<li><strong>Summary:</strong> To characterize spatial light distribution, this project employed the knife-edge scanning method to measure the beam radius (w) of a laser. By fitting the integrated intensity profile (G(x)) to a complementary error function (erfc), the true Gaussian spatial intensity profile (g(x)) was derived. This methodology was used to verify the 5x magnification factor of a Galilean telescope beam expander.<li>
+<ul>
+</div>
 <div class="category-card">
   <a href="{{ '/portfolio/reports/Precision Laser Beam Profiling Campagna.pdf' | relative_url }}" 
     target="_blank" rel="noopener noreferrer"
     class="btn-link">Read Full Report (PDF)</a>
 </div>
-
+</div>
 ---
 
-### Mapping the Magnetic Field of a Short, Thick Solenoid
-* **Course:** University Physics II
-* **Skills:** Error propagation, Faraday induction, Biot-Savart Law application.
-* **Summary:** This experiment involved building and calibrating a 23-turn coil probe to map the axial magnetic field of a non-ideal, 3,400-turn solenoid. The probe was calibrated using the approximately uniform fields of Helmholtz coils via Faraday induction. Measured data were compared against three theoretical models—infinite solenoid, circular-coil approximation, and thin, finite length solenoid—to analyze the effects of solenoid geometry and field fringing.
-
+<div class="content-area">
+<h2>Mapping the Magnetic Field of a Short, Thick Solenoid</h2>
+<div class="category-card">
+<ul>
+<li><strong>Course:</strong> University Physics II</li>
+<li><strong>Skills:</strong> Error propagation, Faraday induction, Biot-Savart Law application.</li>
+<li><strong>Summary:</strong> This experiment involved building and calibrating a 23-turn coil probe to map the axial magnetic field of a non-ideal, 3,400-turn solenoid. The probe was calibrated using the approximately uniform fields of Helmholtz coils via Faraday induction. Measured data were compared against three theoretical models—infinite solenoid, circular-coil approximation, and thin, finite length solenoid—to analyze the effects of solenoid geometry and field fringing.<li>
 <div class="category-card">
     <a href="{{ '/portfolio/reports/Mapping the Magnetic Field Campagna.pdf' | relative_url }}" 
       target="_blank" rel="noopener noreferrer"
       class="btn-link">Read Full Report (PDF)</a>
 </div>
-
+</div>
 ---
 
 ## Class Presentation
-
-### Painting in Polarization: Optics Final Project
-* **Course:** Optics
-* **Skills:** spectral analysis, colorimetry, spectrometer to RGB conversion using Excel.
-* **Summary:** This project explored the principles of birefringence and retardance by creating "Polages" (polarization paintings). Using a JAZ Spectrometer and a polarization gate, I verified that phase retardance (δ) is inversely proportional to wavelength (λ). The research confirmed the complementary color relationship between "Open Gate" (parallel) and "Closed Gate" (perpendicular) polarizer configurations, validating the computational process of converting raw spectral data into sRGB colors.
-
+<div class="content-area">
+<h2>Painting in Polarization: Optics Final Project</h2>
+<div class="category-card">
+<ul>
+<li><strong>Course:</strong> Optics</li>
+<li><strong>Skills:</strong> spectral analysis, colorimetry, spectrometer to RGB conversion using Excel.</li>
+<li><strong>Summary:</strong> This project explored the principles of birefringence and retardance by creating "Polages" (polarization paintings). Using a JAZ Spectrometer and a polarization gate, I verified that phase retardance (δ) is inversely proportional to wavelength (λ). The research confirmed the complementary color relationship between "Open Gate" (parallel) and "Closed Gate" (perpendicular) polarizer configurations, validating the computational process of conve
 <div class="category-card">
     <a href="{{ '/portfolio/reports/Final Optics Project.pdf' | relative_url }}" 
       target="_blank" rel="noopener noreferrer"
       class="btn-link">Read Full Report (PDF)</a>
+</div>
 </div>
