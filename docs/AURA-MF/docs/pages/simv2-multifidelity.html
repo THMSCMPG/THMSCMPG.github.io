@@ -1,0 +1,140 @@
+---
+layout: AURA-MF
+title: SimV2 — Sandia Empirical PV Model
+---
+
+    <main>
+
+        <div class="executive-summary">
+            <h2>Executive Summary</h2>
+            <p>
+                SimV2 implements the <strong>Sandia Empirical PV Model</strong> (King, Boyson &amp; Kratochvil 2004) for 
+                fast, calibration-driven panel temperature and power prediction. It serves as the primary 
+                <strong>medium-accuracy tier</strong> in the fidelity ladder — faster than SimV1 while maintaining 
+                broad validity across operating conditions. SimV2b extends the model with an 
+                <strong>IIR filter</strong> to smooth rapidly-changing irradiance inputs.
+            </p>
+        </div>
+
+        <h2>Sandia Module Temperature Model</h2>
+
+        <h3>Module and Cell Temperature</h3>
+
+        <p>The Sandia model predicts module temperature from ambient conditions and plane-of-array irradiance:</p>
+
+        <p style="text-align: center; margin: 2rem 0;">
+            $$T_{\text{module}} = T_{\text{amb}} + G_{\text{poa}} \cdot e^{a + b \cdot u_\infty}$$
+        </p>
+
+        <p style="text-align: center; margin: 2rem 0;">
+            $$T_{\text{cell}} = T_{\text{module}} + \frac{G_{\text{poa}}}{G_{\text{STC}}} \cdot \Delta T$$
+        </p>
+
+        <p>where:</p>
+        <ul>
+            <li>$a$, $b$ — empirical mount-type coefficients (e.g., open-rack glass/glass: $a = -3.56$, $b = -0.075$)</li>
+            <li>$\Delta T \approx 3$ °C — cell-to-module temperature difference at STC</li>
+            <li>$G_{\text{STC}} = 1000$ W m$^{-2}$ — standard test condition irradiance</li>
+            <li>$u_\infty$ — wind speed [m s$^{-1}$]</li>
+        </ul>
+
+        <div class="theory-box">
+            <h4>Mount-Type Coefficients (examples)</h4>
+            <table>
+                <thead>
+                    <tr><th>Mount Type</th><th>$a$</th><th>$b$</th><th>$\Delta T$ [°C]</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>Open-rack, glass/glass</td><td>-3.56</td><td>-0.075</td><td>3</td></tr>
+                    <tr><td>Close-roof, glass/glass</td><td>-2.81</td><td>-0.0455</td><td>0</td></tr>
+                    <tr><td>Open-rack, polymer/glass</td><td>-3.47</td><td>-0.0594</td><td>3</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h2>Sandia Power Correction</h2>
+
+        <h3>Maximum Power at Operating Conditions</h3>
+
+        <p>SimV2 corrects the STC maximum power for operating irradiance and temperature:</p>
+
+        <p style="text-align: center; margin: 2rem 0;">
+            $$P_{\text{mp}} = \frac{G_{\text{poa}}}{G_{\text{ref}}} P_{\text{mp,ref}} \left[1 + \gamma_{\text{Pmp}} (T_{\text{cell}} - T_{\text{ref}})\right]$$
+        </p>
+
+        <p>where:</p>
+        <ul>
+            <li>$\gamma_{\text{Pmp}} \approx -0.0045$ °C$^{-1}$ — temperature coefficient for crystalline silicon</li>
+            <li>$T_{\text{ref}} = 25$ °C — STC reference temperature</li>
+            <li>$G_{\text{ref}} = 1000$ W m$^{-2}$ — STC reference irradiance</li>
+        </ul>
+
+        <h2>Spectral Correction</h2>
+
+        <h3>Air Mass Modifier</h3>
+
+        <p>
+            SimV2 applies a spectral correction factor $f_1(AM)$ as a cubic polynomial in air mass (AM) to 
+            account for the spectral distribution of incident irradiance deviating from AM1.5:
+        </p>
+
+        <p style="text-align: center; margin: 2rem 0;">
+            $$f_1(AM) = a_0 + a_1 \cdot AM + a_2 \cdot AM^2 + a_3 \cdot AM^3$$
+        </p>
+
+        <p>
+            Coefficients $a_0$–$a_3$ are module-specific and determined from outdoor characterisation data.
+        </p>
+
+        <h2>SimV2b: IIR Filter Variant</h2>
+
+        <h3>Exponential Moving Average Filter</h3>
+
+        <p>
+            SimV2b adds an <strong>IIR (exponential moving average) filter</strong> to smooth rapidly-changing 
+            irradiance inputs before passing them to the Sandia model:
+        </p>
+
+        <p style="text-align: center; margin: 2rem 0;">
+            $$G_{\text{filtered}}(t) = \lambda\, G_{\text{poa}}(t) + (1-\lambda)\, G_{\text{filtered}}(t-1), \quad \lambda \in (0,1)$$
+        </p>
+
+        <p>
+            Smaller $\lambda$ values produce heavier smoothing and are suited to sensors with noisy irradiance 
+            readings or rapidly varying cloud cover. This makes SimV2b the recommended tier for high-frequency 
+            data streams.
+        </p>
+
+        <h2>Role in Fidelity Ladder</h2>
+
+        <p>
+            SimV2/V2b occupies the <strong>middle tier</strong> of the 8-tier AURA-MPC stack:
+        </p>
+
+        <table>
+            <thead>
+                <tr><th>Below SimV2</th><th>SimV2 / SimV2b</th><th>Above SimV2</th></tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>simv0 (single-diode baseline)<br>simv1 / simv1b (Faiman HF gold std.)</td>
+                    <td><strong>simv2</strong> — Sandia empirical<br><strong>simv2b</strong> — Sandia + IIR filter</td>
+                    <td>simv3 / simv3b (energy-balance)<br>simv4 (PINN router)</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <p>
+            SimV2 is the first tier that provides calibration-driven accuracy without the computational cost of 
+            solving a full transient ODE (that is handled by SimV3/V3b). It is faster than SimV1 by several 
+            orders of magnitude while remaining valid across a broad range of irradiance and temperature conditions.
+        </p>
+
+        <h2>References</h2>
+
+        <ol>
+            <li>King, D. L., Boyson, W. E., &amp; Kratochvil, J. A. (2004). <em>Photovoltaic Array Performance Model</em>. Sandia National Laboratories, SAND2004-3535.</li>
+            <li>King, D. L., et al. (1997). Temperature coefficients for PV modules and arrays. <em>Proc. 26th IEEE PVSC</em>.</li>
+        </ol>
+    
+    </main>

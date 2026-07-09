@@ -1,0 +1,17 @@
+services:
+  - type: web
+    name: aura-mf-backend
+    runtime: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn app:app
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.11.10
+      - key: ALLOWED_ORIGINS
+        value: https://thmscmpg.github.io
+      - key: MAX_GRID_SIZE
+        value: 200
+      - key: ENABLE_CACHING
+        value: true
+      - key: LOG_LEVEL
+        value: INFO

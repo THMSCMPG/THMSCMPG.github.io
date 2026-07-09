@@ -1,0 +1,62 @@
+---
+layout: AURA-MF
+title: Page Not Found
+permalink: /404.html
+sitemap: false
+---
+
+
+<div style="text-align: center; padding: 60px 20px;">
+    <div style="font-size: 100px; color: var(--warning); margin-bottom: 20px;">
+        <i class="fas fa-radiation"></i>
+    </div>
+    
+    <h1 style="font-size: 2.5rem; margin-bottom: 20px; color: var(--dark);">
+        404: Page Not Found
+    </h1>
+    
+    <p style="font-size: 1.1rem; color: var(--text); margin-bottom: 30px; max-width: 600px; margin-left: auto; margin-right: auto;">
+        The page you're looking for doesn't exist or has been moved. Let's get you synced up.
+    </p>
+    
+    <div class="project-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin-top: 15px;">
+        <a href="{{ '/index.html' | relative_url }}" class="download-btn" style="display: block; padding: 12px; background: var(--primary); color: white; border-radius: 8px; text-decoration: none; font-weight: 600;">
+            <span class="icon">🏠</span>
+            <div>
+                <strong>AURA-MF Home</strong>
+                <span>Return to main page</span>
+            </div>
+        </a>
+        
+        <a href="{{ '/pages/simv1-gold-standard' | relative_url }}" class="download-btn" style="display: block; padding: 12px; background: var(--primary); color: white; border-radius: 8px; text-decoration: none; font-weight: 600;">
+            <span class="icon">📊</span>
+            <div>
+                <strong>SimV1 Documentation</strong>
+                <span>High-fidelity baseline</span>
+            </div>
+        </a>
+        
+        <a href="{{ '/pages/simv4-ml-orchestrator' | relative_url }}" class="download-btn" style="display: block; padding: 12px; background: var(--primary); color: white; border-radius: 8px; text-decoration: none; font-weight: 600;">
+            <span class="icon">🎛️</span>
+            <div>
+                <strong>Interactive Dashboard</strong>
+                <span>Run live simulations</span>
+            </div>
+        </a>
+    </div>
+    
+    <div style="margin-top: 40px;">
+        <a href="https://thmscmpg.github.io/" style="color: var(--primary); text-decoration: none;">
+            <i class="fas fa-arrow-left"></i> Return to Main Site
+        </a>
+    </div>
+    <div class="theory-box" style="max-width: 600px; margin: 0 auto;">
+        <h3 style="margin-top: 0; color: var(--info);">Error Diagnosis</h3>
+        <p style="margin-bottom: 0; color: var(--text); text-align: left;">
+            <strong>Error Code:</strong> 404 NOT_FOUND<br>
+            <strong>Suggestion:</strong> Check URL path or navigate using links above<br>
+            <strong>Support:</strong> <a href="https://github.com/THMSCMPG" target="_blank" rel="noopener" style="color: var(--primary);">GitHub</a>
+        </p>
+    </div>
+</div>
+
