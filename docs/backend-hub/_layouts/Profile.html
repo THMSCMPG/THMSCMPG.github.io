@@ -36,10 +36,10 @@
     <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
     
     <!-- Compiled CSS from SASS -->
-    <link rel="stylesheet" href="https://thmscmpg.github.io/backend-hub/assets/css/style.css">
+    <link rel="stylesheet" href="{{ '/backend-hub/assets/css/style.css' | relative_url }}">
     
     <!-- Project-Specific CSS -->
-    <link rel="stylesheet" href="https://thmscmpg.github.io/backend-hub/assets/css/profile.css">
+    <link rel="stylesheet" href="{{ '/backend-hub/assets/css/profile.css' | relative_url }}">
 
     <!-- External Libraries -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" 
@@ -91,18 +91,23 @@
     <script>
         // Mobile sidebar toggle
         function toggleSidebar() {
-            const sidebar = document.getElementById('mySidebar');
+            const sidebar = document.getElementById('mobileSidebar');
             if (sidebar) {
                 sidebar.classList.toggle('open');
                 document.body.classList.toggle('sidebar-open');
-                sidebar.setAttribute('aria-hidden', !sidebar.classList.contains('open'));
+                const isOpen = sidebar.classList.contains('open');
+                sidebar.setAttribute('aria-hidden', isOpen ? 'false' : 'true');
+                const menuBtn = document.getElementById('menu-btn');
+                if (menuBtn) {
+                    menuBtn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+                }
             }
         }
         
         // Close sidebar on escape key
         document.addEventListener('keydown', function(e) {
             if (e.key === 'Escape') {
-                const sidebar = document.getElementById('mySidebar');
+                const sidebar = document.getElementById('mobileSidebar');
                 if (sidebar && sidebar.classList.contains('open')) {
                     toggleSidebar();
                 }
