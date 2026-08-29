@@ -132,6 +132,9 @@
             // Close dropdown on Escape key
             document.addEventListener('keydown', function(e) {
                 if (e.key === 'Escape') {
+                    if (!dropbtn || !dropdownContent) {
+                        return;
+                    }
                     toggleSidebar(false);
                     dropbtn.setAttribute('aria-expanded', 'false');
                     dropdownContent.classList.remove('show');
