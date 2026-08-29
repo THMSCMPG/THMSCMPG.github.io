@@ -43,8 +43,8 @@ title: First-Order ODEs - Solar Panel Dynamics
             <p>Numerical accuracy is highly dependent on the time step ($h$). As seen in our analysis, reducing the step size from $h=100s$ (37 points) to $h=10s$ (361 points) significantly reduces the absolute error in the linear model.</p>
             
             <div class="image-grid">
-                <img src="https://thmscmpg.github.io/AURA-MF/assets/Plots/euler_plot_37_points.png" alt="Euler Plot 37 points" style="width:45%;">
-                <img src="https://thmscmpg.github.io/AURA-MF/assets/Plots/euler_plot_361_points.png" alt="Euler Plot 361 points" style="width:45%;">
+                <img src="{{ '/AURA-MF/assets/Plots/euler_plot_37_points.png' | relative_url }}" alt="Euler Plot 37 points" style="width:45%;">
+                <img src="{{ '/AURA-MF/assets/Plots/euler_plot_361_points.png' | relative_url }}" alt="Euler Plot 361 points" style="width:45%;">
             </div>
             <p><em>Notice that the Improved Euler method (Heun's) maintains a much lower error profile even at larger step sizes compared to the standard Euler method.</em></p>
         </div>
@@ -53,8 +53,8 @@ title: First-Order ODEs - Solar Panel Dynamics
         <h3>Direction Fields</h3>
         <p>Direction fields illustrate the stability of the system. Regardless of the initial temperature, the system naturally "flows" toward its steady-state temperature.</p>
         <div class="image-grid">
-            <img src="https://thmscmpg.github.io/AURA-MF/assets/Plots/traditional_vectorfield_linear.png" alt="Linear Direction Field" style="width:45%;">
-            <img src="https://thmscmpg.github.io/AURA-MF/assets/Plots/traditional_vectorfield_nonlinear.png" alt="Nonlinear Direction Field" style="width:45%;">
+            <img src="{{ '/AURA-MF/assets/Plots/traditional_vectorfield_linear.png' | relative_url }}" alt="Linear Direction Field" style="width:45%;">
+            <img src="{{ '/AURA-MF/assets/Plots/traditional_vectorfield_nonlinear.png' | relative_url }}" alt="Nonlinear Direction Field" style="width:45%;">
         </div>
         
             </section>
@@ -65,9 +65,9 @@ title: First-Order ODEs - Solar Panel Dynamics
         <h2>Poster, Presentation, and Initial Paper</h2>
         <p>Further details on the multi-fidelity approach and future machine learning integration can be found in the project assets below.</p>
         <ul>
-            <li><a href="https://thmscmpg.github.io/AURA-MF/assets/Posters/TAS_Poster.pdf" target="_blank" rel="noopener noreferrer">Research Poster (PDF)</a></li>
-            <li><a href="https://thmscmpg.github.io/AURA-MF/assets/Posters/In_Class_Presentation.pptx">Project Slide Deck (PPTX)</a></li>
-            <li><a href="https://thmscmpg.github.io/portfolio/reports/Investigating_Temperature_Change_Over_Time.pdf" target="_blank" rel="noopener noreferrer" class="btn-link">Read Full Report (PDF)</a></li>
+            <li><a href="{{ '/AURA-MF/assets/Posters/TAS_Poster.pdf' | relative_url }}" target="_blank" rel="noopener noreferrer">Research Poster (PDF)</a></li>
+            <li><a href="{{ '/AURA-MF/assets/Posters/In_Class_Presentation.pptx' | relative_url }}">Project Slide Deck (PPTX)</a></li>
+            <li><a href="{{ '/thmscmpg/portfolio/reports/Investigating_Temperature_Change_Over_Time.pdf' | relative_url }}" target="_blank" rel="noopener noreferrer" class="btn-link">Read Full Report (PDF)</a></li>
         </ul>
     </section>
 

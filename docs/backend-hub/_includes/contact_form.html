@@ -73,7 +73,7 @@
 <!-- Bridge iframe: hidden relay to backend-hub (postMessage only) -->
 <iframe 
     id="backend-bridge" 
-    src="https://thmscmpg.github.io/backend-hub" 
+    src="{{ '/backend-hub/' | relative_url }}" 
     style="position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); border: 0;"
     title="Backend communication relay"
     aria-hidden="true">
