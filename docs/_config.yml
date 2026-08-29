@@ -24,10 +24,6 @@ plugins:
   - jekyll-feed
   - jekyll-seo-tag
   - jekyll-sitemap
-  - jekyll-remote-theme
-
-# Remote Theme Configuration
-remote_theme: THMSCMPG/backend-hub@main
 
 # Sass Configuration
 sass:
