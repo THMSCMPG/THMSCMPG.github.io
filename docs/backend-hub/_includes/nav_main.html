@@ -138,6 +138,7 @@
                     const sidebar = document.getElementById('mobileSidebar');
                     if (sidebar && sidebar.classList.contains('open')) {
                         toggleSidebar(false);
+                        return;
                     }
                     dropbtn.setAttribute('aria-expanded', 'false');
                     dropdownContent.classList.remove('show');
