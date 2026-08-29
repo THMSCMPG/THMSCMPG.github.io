@@ -135,7 +135,10 @@
                     if (!dropbtn || !dropdownContent) {
                         return;
                     }
-                    toggleSidebar(false);
+                    const sidebar = document.getElementById('mobileSidebar');
+                    if (sidebar && sidebar.classList.contains('open')) {
+                        toggleSidebar(false);
+                    }
                     dropbtn.setAttribute('aria-expanded', 'false');
                     dropdownContent.classList.remove('show');
                     dropbtn.focus();
