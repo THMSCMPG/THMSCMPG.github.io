@@ -51,10 +51,21 @@
       color: var(--dark);
       font-weight: 700;
     }
+    .menu-toggle {
+      display: none;
+      border: 1px solid var(--border);
+      background: var(--panel);
+      color: var(--dark);
+      border-radius: 8px;
+      padding: 8px 10px;
+      font-size: 1rem;
+      cursor: pointer;
+    }
     .site-nav {
       display: flex;
       gap: 14px;
       flex-wrap: wrap;
+      align-items: center;
     }
     .site-nav a {
       text-decoration: none;
@@ -62,6 +73,18 @@
       font-weight: 600;
     }
     .site-nav a:hover { color: var(--primary); }
+    @media (max-width: 760px) {
+      .menu-toggle { display: inline-flex; align-items: center; justify-content: center; }
+      .site-nav {
+        display: none;
+        width: 100%;
+        flex-direction: column;
+        align-items: flex-start;
+        padding-top: 10px;
+      }
+      .site-nav.is-open { display: flex; }
+      .site-nav a { width: 100%; padding: 6px 0; }
+    }
     main {
       max-width: 980px;
       margin: 30px auto;
@@ -121,10 +144,14 @@
   <header class="site-header">
     <div class="site-header-inner">
       <a class="brand" href="{{ '/' | relative_url }}">{{ site.title }}</a>
-      <nav class="site-nav" aria-label="Primary">
+      <button class="menu-toggle" id="menu-toggle" type="button" aria-label="Toggle navigation" aria-expanded="false" aria-controls="site-nav">
+        <i class="fas fa-bars" aria-hidden="true"></i>
+      </button>
+      <nav class="site-nav" id="site-nav" aria-label="Primary">
         <a href="{{ '/' | relative_url }}">Home</a>
         <a href="{{ '/projects' | relative_url }}">Projects</a>
         <a href="{{ '/reports' | relative_url }}">Reports</a>
+        <a href="{{ '/CircuitNotes/' | relative_url }}">CircuitNotes</a>
         <a href="{{ '/portfolio/Campagna_CV_2025.pdf' | relative_url }}">CV</a>
       </nav>
     </div>
@@ -135,5 +162,16 @@
   <footer class="site-footer">
     © {{ "now" | date: "%Y" }} {{ site.author | default: site.title }}
   </footer>
+  <script>
+    (function () {
+      var btn = document.getElementById('menu-toggle');
+      var nav = document.getElementById('site-nav');
+      if (!btn || !nav) return;
+      btn.addEventListener('click', function () {
+        var open = nav.classList.toggle('is-open');
+        btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+      });
+    })();
+  </script>
 </body>
 </html>
