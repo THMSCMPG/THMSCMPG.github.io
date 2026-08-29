@@ -1,0 +1,149 @@
+---
+layout: AURA-MF
+title: SimV4 — PINN Fidelity Router
+---
+
+    <main>
+
+        <div class="executive-summary">
+            <h2>Executive Summary</h2>
+            <p>SimV4 is the <strong>top-tier solver</strong> in AURA-MFP. Rather than solving the thermal/spectral 
+            model itself, it runs a compact <strong>Physics-Informed Neural Network (PINN)</strong> whose weights are 
+            embedded at compile time via <code>pinn_weights_module.f90</code>. SimV4 emits a 
+            <strong>5-way routing probability vector</strong> recommending which of SimV0–SimV4 best matches the 
+            current operating regime, plus a predicted panel temperature and spectral mismatch factor. 
+            Forward-pass cost: <strong>&lt; 5 ms</strong> (pure Fortran, zero file I/O at runtime).</p>
+        </div>
+
+        <div class="highlight-box">
+            <h3>🚀 Key Facts</h3>
+            <p style="font-size: 1.5rem; margin: 0; font-weight: 700;">&lt; 5 ms inference | Zero runtime I/O</p>
+            <p style="margin: 0.5rem 0 0 0; opacity: 0.9;">PINN weights compiled directly into the Fortran binary</p>
+        </div>
+
+        <h2>DualHead PINN Architecture</h2>
+
+        <h3>Network Design</h3>
+
+        <p>The PINN uses a <strong>dual-head architecture</strong>:</p>
+        <ul>
+            <li><strong>Temperature head:</strong> predicts $T_{\text{panel}}$ [°C] from weather inputs</li>
+            <li><strong>Routing head:</strong> emits a 5-way softmax probability vector
+                $$\mathbf{p} = [p_{\text{LOFI}},\; p_{\text{SimV1}},\; p_{\text{SimV2}},\; p_{\text{SimV3}},\; p_{\text{SimV4}}], \quad \sum p_i = 1$$
+            </li>
+        </ul>
+
+        <div class="theory-box">
+            <h4>Network Architecture</h4>
+            <p>Input (7 features) → Hidden (16 neurons, tanh) → Hidden (16 neurons, tanh) → Dual output heads</p>
+            <p><strong>Input features:</strong> $[G_{\text{poa}},\; T_{\text{amb}},\; u_\infty,\; \text{CC},\; \phi,\; \lambda,\; \text{img\_features}[1..5]]$</p>
+        </div>
+
+        <h2>JSON Interface</h2>
+
+        <h3>Input / Output Contract</h3>
+
+        <p><strong>Input JSON:</strong></p>
+        <pre>{"t_s": float, "G_poa": float, "T_amb": float, "WS": float,
+ "CC": float, "lat": float, "lon": float,
+ "img_features": [f1, f2, f3, f4, f5]}</pre>
+
+        <p><strong>Output JSON:</strong></p>
+        <pre>{"T_panel_predicted": float,
+ "routing_probs": {"LOFI": p0, "SIMV1": p1, "SIMV2": p2,
+                   "SIMV3": p3, "SIMV4": p4},
+ "spectral_mismatch_factor": float,
+ "efficiency_derating": float,
+ "inference_time_ms": float,
+ "confidence": float}</pre>
+
+        <p>where <code>confidence = max(routing_probs)</code>.</p>
+
+        <h2>Spectral Mismatch Factor</h2>
+
+        <h3>AM1.5-Normalised Spectral Mismatch</h3>
+
+        <p>
+            SimV4 computes the spectral mismatch factor using the loaded silicon optical LUT 
+            (Green &amp; Keevers 1995) and the AM1.5 reference spectrum (ASTM G173-03):
+        </p>
+
+        <p style="text-align: center; margin: 2rem 0;">
+            $$M_{\text{spectral}} = \frac{\displaystyle\int E(\lambda) \cdot \text{EQE}(\lambda) \, d\lambda}{\displaystyle\int E_{\text{AM1.5}}(\lambda) \cdot \text{EQE}(\lambda) \, d\lambda}$$
+        </p>
+
+        <p>
+            Computed via cubic spline interpolation of the silicon optical LUT over the AM1.5 integral 
+            (280–4000 nm range, 361 points).
+        </p>
+
+        <h2>Weight Embedding and Inference</h2>
+
+        <h3>Compile-Time Weight Embedding</h3>
+
+        <p>
+            PINN weights are generated offline by 
+            <code>modules/pinn-aura-mfp/scripts/export_weights_to_aura_mfp.py</code>, which writes every weight and 
+            bias as named Fortran constants into <code>pinn_weights_module.f90</code>. This file is compiled 
+            directly into the SimV4 binary, making inference a <strong>pure Fortran forward pass</strong> with 
+            zero file I/O at runtime.
+        </p>
+
+        <div class="theory-box">
+            <p><strong>Forward pass cost:</strong> &lt; 5 ms (deterministic; <code>--test</code> mode completes in &lt; 5 ms)</p>
+            <p><strong>Architecture:</strong> 2 × 16 hidden neurons (tanh) — compact by design to enable Fortran deployment</p>
+        </div>
+
+        <h2>Data Requirements</h2>
+
+        <h3>Required Data Files</h3>
+
+        <p>SimV4 requires three data files at startup:</p>
+
+        <table>
+            <thead>
+                <tr><th>File</th><th>Contents</th><th>Points</th></tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><code>data/atmospheric_luts/am15_global.csv</code></td>
+                    <td>ASTM G173-03 AM1.5 spectrum</td>
+                    <td>510</td>
+                </tr>
+                <tr>
+                    <td><code>data/material_properties/silicon_optical.dat</code></td>
+                    <td>Green &amp; Keevers (1995) Si optical properties</td>
+                    <td>361</td>
+                </tr>
+                <tr>
+                    <td><code>data/geographic/locations.csv</code></td>
+                    <td>Geographic reference data</td>
+                    <td>—</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <p>
+            If any file is missing, SimV4 emits <code>STOP 1</code> with a descriptive error rather than 
+            silently falling back.
+        </p>
+
+        <h2>Key Contributions</h2>
+
+        <ol>
+            <li><strong>First Fortran-embedded PINN router</strong> for multi-fidelity PV simulation (zero runtime I/O)</li>
+            <li><strong>Compile-time weight embedding</strong> via <code>pinn_weights_module.f90</code> (no Python dependency at inference)</li>
+            <li><strong>Dual-head architecture</strong> simultaneously predicts panel temperature and optimal fidelity tier</li>
+            <li><strong>Spectral mismatch factor</strong> from AM1.5/Si LUT (cubic spline, full 280–4000 nm range)</li>
+        </ol>
+
+        <h2>References</h2>
+
+        <ol>
+            <li>King, D. L., et al. (2004). <em>Photovoltaic Array Performance Model</em>. Sandia National Laboratories, SAND2004-3535.</li>
+            <li>Green, M. A., &amp; Keevers, M. J. (1995). Optical properties of intrinsic silicon at 300 K. <em>Progress in Photovoltaics</em>, 3(3), 189-192.</li>
+            <li>ASTM G173-03 Standard Tables for Reference Solar Spectral Irradiances (AM1.5 Global).</li>
+            <li>Raissi, M., Perdikaris, P., &amp; Karniadakis, G. E. (2019). Physics-informed neural networks. <em>Journal of Computational Physics</em>, 378, 686-707.</li>
+        </ol>
+
+    </main>

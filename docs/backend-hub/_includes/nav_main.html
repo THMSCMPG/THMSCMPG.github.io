@@ -1,0 +1,145 @@
+
+
+<!-- Mobile Sidebar -->
+<div id="mobileSidebar" class="navbar" role="navigation" aria-label="Mobile navigation" aria-hidden="true">
+    <ul class="nav-links">
+        <a href="https://thmscmpg.github.io/index.html">Home</a>
+        <a href="https://thmscmpg.github.io/projects">Research</a>
+        <a href="https://thmscmpg.github.io/reports">LabReports</a>
+        <a href="https://thmscmpg.github.io/portfolio/Campagna_CV_2025.pdf" target="_blank" rel="noopener noreferrer">CV</a>
+        <a href="https://thmscmpg.github.io/CircuitNotes/index.html" role="menuitem">CircuitNotes</a>
+        <a href="https://thmscmpg.github.io/AURA-MF/index.html" role="menuitem">AURA-MF</a>
+    </ul>
+</div>
+
+<!-- Desktop Navigation Bar -->
+<nav class="navbar" role="navigation" aria-label="Main navigation">
+    <div class="container">
+        <a href="https://thmscmpg.github.io/" class="logo" aria-label="THMSCMPG Home">
+            <i class="fas fa-bolt-lightning" aria-hidden="true"></i> THMSCMPG
+        </a>
+        
+        <ul class="nav-links">
+            <!-- Hardcoded Main Links (absolute URLs for cross-site navigation) -->
+            <li><a href="https://thmscmpg.github.io/index.html">Home</a></li>
+            <li><a href="https://thmscmpg.github.io/projects">Research</a></li>
+            <li><a href="https://thmscmpg.github.io/reports">LabReports</a></li>
+            <li><a href="https://thmscmpg.github.io/portfolio/Campagna_CV_2025.pdf" target="_blank" rel="noopener noreferrer">CV</a></li>
+
+            <!-- Documentation Dropdown -->
+            <li class="dropdown">
+                <span class="nav-label" aria-hidden="true">Jump to Docs</span>
+                <button class="dropbtn" aria-label="Open documentation menu" aria-haspopup="true" aria-expanded="false">
+                    <i class="fas fa-bars" aria-hidden="true"></i>
+                </button>
+                <div class="dropdown-content" role="menu" aria-label="Documentation links">
+                    <a href="https://thmscmpg.github.io/CircuitNotes/index.html" role="menuitem">CircuitNotes</a>
+                    <a href="https://thmscmpg.github.io/CircuitNotes/master-reference" role="menuitem">MasterRef</a>
+                    <a href="https://thmscmpg.github.io/AURA-MF/index.html" role="menuitem">AURA-MFP</a>
+                </div>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<script>
+    // Smooth scroll for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            const href = this.getAttribute('href');
+            if(href.startsWith('#') && href.length > 1) {
+                e.preventDefault();
+                const target = document.querySelector(href);
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    // Update focus for accessibility
+                    target.focus();
+                    // Update active state
+                    document.querySelectorAll('.peek-nav a').forEach(a => a.classList.remove('active'));
+                    this.classList.add('active');
+                }
+            }
+        });
+    });
+
+    // Sidebar toggle function with ARIA updates
+    function toggleSidebar() {
+        const sidebar = document.getElementById("mobileSidebar");
+        const menuBtn = document.querySelector('.menu-btn');
+        
+        if (sidebar) {
+            const isOpen = sidebar.classList.contains('open');
+            
+            // Attach event listener after DOM is loaded
+            document.addEventListener('DOMContentLoaded', function() {
+            const menuBtn = document.querySelector('.menu-btn');
+            if (menuBtn) {
+                menuBtn.addEventListener('click', toggleSidebar);
+            }
+            })
+
+            // Toggle sidebar with class
+            if (isOpen) {
+                sidebar.classList.remove('open');
+                document.body.classList.remove('sidebar-open');
+            } else {
+                sidebar.classList.add('open');
+                document.body.classList.add('sidebar-open');
+            }
+            
+            // Update ARIA attributes
+            sidebar.setAttribute('aria-hidden', isOpen);
+            if (menuBtn) {
+                menuBtn.setAttribute('aria-expanded', !isOpen);
+            }
+            
+            // Trap focus when sidebar is open
+            if (!isOpen) {
+                const firstLink = sidebar.querySelector('a:not(.close-btn)');
+                if (firstLink) {
+                    setTimeout(() => firstLink.focus(), 300);
+                }
+            }
+        }
+    }
+    
+    // Dropdown accessibility
+    document.addEventListener('DOMContentLoaded', function() {
+        const dropdown = document.querySelector('.dropdown');
+        const dropbtn = dropdown ? dropdown.querySelector('.dropbtn') : null;
+        const dropdownContent = dropdown ? dropdown.querySelector('.dropdown-content') : null;
+        
+        if (dropbtn && dropdownContent) {
+            // Toggle dropdown on button click (primarily for mobile)
+            dropbtn.addEventListener('click', function(e) {
+                // On mobile (touch devices), use click control
+                if (window.innerWidth <= 768 || ('ontouchstart' in window)) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    const isExpanded = this.getAttribute('aria-expanded') === 'true';
+                    this.setAttribute('aria-expanded', !isExpanded);
+                    dropdownContent.classList.toggle('show');
+                }
+                // On desktop, let CSS :hover handle it
+            });
+            
+            // Close dropdown when clicking outside
+            document.addEventListener('click', function(e) {
+                if (!dropdown.contains(e.target)) {
+                    dropbtn.setAttribute('aria-expanded', 'false');
+                    dropdownContent.classList.remove('show');
+                }
+            });
+            
+            // Close dropdown on Escape key
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape') {
+                    dropbtn.setAttribute('aria-expanded', 'false');
+                    dropdownContent.classList.remove('show');
+                    dropbtn.focus();
+                }
+            });
+        }
+
+    });
+</script>
