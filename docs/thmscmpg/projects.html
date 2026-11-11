@@ -9,44 +9,60 @@ title: Research Projects
 
 <div class="content-area">
 
-<h2>Comparing 5 Methods to Determine the Index of Refraction of a Glass Prism</h2>
-<p><strong>The Objective:</strong> This research evaluates the precision and pedagogical utility of five distinct experimental methodologies for determining the refractive index of optical glass. We quantify the systematic uncertainties inherent in each approach. A central component of this study involves fitting experimental dispersion data to the Sellmeier Equation, allowing for a robust comparison against theoretical values. This work serves not only to validate high-precision optical techniques but also to identify the most effective methodologies for undergraduate-level optics.</p>
+<h2>Comparing Seven Methods to Determine the Index of Refraction of a Glass Prism</h2>
+<p><strong>The Objective:</strong> This research evaluates the precision and pedagogical utility of seven experimental methods for determining the refractive index of optical glass across five laser wavelengths. We quantify the systematic uncertainties inherent in each approach. A central component of this study involves fitting experimental dispersion data to the Sellmeier Equation, allowing for a robust comparison against theoretical values. This work serves not only to validate high-precision optical techniques but also to identify the most effective methodologies for undergraduate-level optics.</p>
 
 <div class="math-box">
-<strong>The Methods List:</strong>
+<strong>Methods include:</strong>
 <ul>
 <li>Minimum Deviation</li>
 <li>Fresnel Reflectance</li>
 <li>Minimum Deviation Curve Fitting</li>
-<li>Brewster’s Angle</li>
+<li>Brewster&rsquo;s Angle</li>
 <li>Rotating Analyzer Ellipsometry (RAE)</li>
+<li>Total Internal Reflection</li>
 </ul>
 </div>
 
 <p><strong>The Math:</strong> The Sellmeier Equation is the standard for refractive index dispersion.
 It displays an empirical relationship between the index of refraction and the wavelength for any transparent medium. The Sellmeier Equation makes use of two experimentally determined coefficients representing physical features of the transparent medium and the lasers wavelength in nanometers.</p>
 
-<p><strong>The Findings:</strong> The angle of minimum deviation has shown the highest accuracy (≤ 0.03% error from Sellmeier values).</p>
+<p><strong>The Findings:</strong> The angle of minimum deviation has shown the highest accuracy (&le; 0.03% error from Sellmeier values).</p>
 
-<p><strong>Current Progress:</strong> We are currently wrapping up RAE and beginning our sixth and final method, <strong>Total Internal Reflection</strong>.</p>
+<p><strong>Current Progress:</strong> Data collection is complete and we are preparing the paper for the European Journal of Physics with Dr. Eugenii Donev.</p>
 </div>
 
 <div class="content-area">
 
-<h2>Atmospheric-Unified Radiation Assessment with Multi-Fidelity (AURA-MF)</h2>
-<p><strong>The Scientific Problem:</strong> I am coupling the Boltzmann Transport Equation (BTE) (for photon/radiation travel) with Navier-Stokes (N-S) (for air/fluid flow). Solving both at a high resolution is too computationally expensive, as such I am implementing various degrees of fidelity in order to approximate accurate values with fewer resources.</p>
+<h2>AURA-MPC: Model Predictive Control for Photovoltaic Panel Orientation</h2>
+<p><strong>The Problem:</strong> A 3-axis solar panel mount can point anywhere, but which pose gives the most electrical power once panel heating is taken into account? Model predictive control answers this by forecasting the system over a short horizon, choosing the best action, applying only the first move, and re-planning every 15 minutes.</p>
 
-<p><strong>The Methodology:</strong> Currently, I am using a low-fidelity model (fast, less accurate) to guide a high-fidelity model (slow, very accurate) to save time without losing physics for each set of equations. The resulting outputs are compared with the data produced by a coupled high-fidelity only model.</p>
+<p><strong>The Methodology:</strong> A lumped energy balance for the panel (absorbed irradiance, temperature-dependent efficiency, and wind-dependent convection) generates 10<sup>6</sup> training rows with an RK4 integrator written in Fortran. A neural surrogate (MLP) and a physics-constrained model that learns only three physical constants are trained to forecast panel temperature 15 minutes ahead. The controller searches a 19 &times; 19 pitch&ndash;yaw grid for the pose that maximizes power.</p>
 
-<p><strong>Technical Stack:</strong> The simulation's program is written in Fortran 90 and OpenMP. I take advantage of Monte-Carlo simulations, the diffusion approximation, the poisson approximation, and coarse discretization.</p>
+<p><strong>The Findings:</strong></p>
+<ul>
+<li>The surrogate matches its generator to 0.06 K and retrains in about 2 minutes on a laptop CPU.</li>
+<li>Temperature cannot move the pose: under a power objective, the best pose is always the max-irradiance pose, so the controller acts as a sun tracker and the surrogate&rsquo;s useful output is the temperature forecast.</li>
+<li>On a year of Sandia National Laboratories module data, the zero-shot MLP is worse than persistence, but calibrating three physical constants brings the error to 2.21 K (vs 3.20 K for persistence).</li>
+<li>In a closed-loop sandbox simulating our data acquisition system, the controller captures 98.7% of oracle energy.</li>
+</ul>
 
-<p><strong>Current Progress:</strong> As of February 2026, I have finished pre-alpha development. Research and documentation is complete and I am currently exploring alpha development.</p>
+<p><strong>Technical Stack:</strong> Fortran (RK4 data generator), Python and PyTorch (surrogates and MPC), Raspberry Pi Pico data acquisition with thermocouples and a weather meter.</p>
+
+<p><strong>Current Progress:</strong> Presented at SESAPS in November 2026. Next I am collecting thermocouple data on our own panel in Clarksville, TN to refit the model and retrain.</p>
+<a class="btn-link" href="{{ '/AURA-MF/' | relative_url }}">Full Project Page</a>
 </div>
 
-
-<img alt="space_time_3d_surface" src="{{ '/thmscmpg/portfolio/full_thermal_evolution.png' | relative_url }}" style="max-width: 100%; height: auto; display: block; align: center; margin: 20px auto;" />
+<img alt="poster on model predictive control for photovoltaic panel orientation" src="{{ '/AURA-MF/assets/Posters/SESAPS_2026_Poster.jpg' | relative_url }}" style="max-width: 100%; height: auto; display: block; margin: 20px auto;" />
 <table style='align: center'>
   <tr>
-    <th>Fig. 1: 3D temperature graph for x-coordinate over time, high-fidelity only model.</th>
+    <th>Fig. 1: AURA-MPC poster, SESAPS 2026.</th>
   </tr>
 </table>
+
+<h1>Other Projects</h1>
+<div class="content-area">
+<h2>Game Developer, Train Wreck Company</h2>
+<p>I work as a developer at Train Wreck Company, an independent game studio. I program gameplay and engine systems in C++ for <strong>BREACHPUNK</strong>, a 2D narrative game currently in development, and work on the studio&rsquo;s in-house engine and editor used to prototype mechanics, playtest, and build its games.</p>
+<a class="btn-link" href="https://trainwreckcompany.github.io/" target="_blank" rel="noopener noreferrer">Visit Train Wreck Company</a>
+</div>

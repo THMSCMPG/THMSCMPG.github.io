@@ -1,209 +1,128 @@
 ---
 layout: AURA-MF
-title: Atmosphere-Unified Radiation Assessment with Multi-Fidelity for Photovoltaics (AURA-MFP)
+title: "AURA-MPC: Model Predictive Control for Photovoltaic Panel Orientation"
 ---
 
 <header style="margin-bottom: 40px; text-align: center;">
-    <h1 style="color: var(--primary); font-size: 2.5rem; margin-bottom: 0.5rem; font-weight: 800;">AURA-MFP</h1>
-    <div style="color: var(--text-light); font-size: 1.1rem; letter-spacing: 1px;">Undergraduate Independent Research into High Performance Computing</div>
+    <h1 style="color: var(--primary); font-size: 2.5rem; margin-bottom: 0.5rem; font-weight: 800;">AURA-MPC</h1>
+    <div style="color: var(--text); font-size: 1.1rem; letter-spacing: 1px;">Model Predictive Control: Physics-Informed Surrogate for Photovoltaic Panel Orientation</div>
+    <div style="color: #6b7280; margin-top: 6px;">Independent undergraduate research, Department of Physics, Engineering, and Astronomy, Austin Peay State University</div>
 </header>
 
-
-<section id="overview" class="hero">
-    <h2>Closed-Loop Multi-Fidelity PV Simulation</h2>
+<section id="overview" class="content-area">
+    <h2 style="margin-top: 0;">Overview</h2>
     <p>
-        AURA-MFP is a closed-loop model predictive control framework for photovoltaic systems. Edge sensors 
-        (<strong>Pico RP2040 + Raspberry Pi 3B+</strong>) feed real-time weather data into a 
-        <strong>DualHead PINN orchestrator</strong>, which predicts panel temperature and selects the optimal 
-        fidelity tier from an 8-tier Fortran multi-fidelity solver stack (simv0–simv4). The solver output 
-        drives actuator commands, completing the control loop. Validation is in progress against the 
-        <strong>Sandia PVMC dataset</strong>.
+        AURA-MPC is a model predictive controller (MPC) for a 3-axis photovoltaic panel mount. Every 15 minutes the
+        controller measures the weather, panel temperature, and pose, predicts the next 15 minutes for each candidate
+        pose, picks the pose that maximizes electrical power, applies only that first move, and repeats.
+        The forecasts come from a neural surrogate of a lumped thermal model, trained on synthetic data from an RK4
+        generator written in Fortran.
     </p>
+    <ul>
+        <li>The surrogate matches its generator to <strong>0.06 K</strong> at 15 minutes and retrains in about 2 minutes on a laptop CPU.</li>
+        <li>Under a power objective, the best pose is always the max-irradiance pose, so the surrogate's useful output is the 15-minute temperature forecast.</li>
+        <li>On a year of Sandia National Laboratories module data, a physics-calibrated model beats persistence (<strong>2.21 K vs 3.20 K</strong> RMSE). The zero-shot network does not.</li>
+        <li>In a closed-loop sandbox, the MPC captures <strong>98.7%</strong> of oracle energy.</li>
+    </ul>
 </section>
 
-<section id="architecture">
-    <div style="border-left: 4px solid var(--primary); padding-left: 20px; margin: 60px 0 30px;">
-        <h2>Multi-Fidelity Architecture</h2>
+<section id="poster">
+    <div style="border-left: 4px solid var(--primary); padding-left: 20px; margin: 50px 0 20px;">
+        <h2>Poster</h2>
     </div>
-    
-    <p style="color: var(--text); margin-bottom: 2rem; max-width: 800px;">
-        AURA-MPC implements an 8-tier fidelity ladder. The DualHead PINN orchestrator (simv4) selects the 
-        optimal tier at runtime based on current operating conditions.
-    </p>
+    <a href="{{ '/AURA-MF/assets/Posters/SESAPS_2026_Poster.pdf' | relative_url }}" target="_blank" rel="noopener noreferrer">
+        <img alt="Poster: Model Predictive Control: Physics-Informed Surrogate for Photovoltaic Panel Orientation" src="{{ '/AURA-MF/assets/Posters/SESAPS_2026_Poster.jpg' | relative_url }}" style="display: block; margin: 0 auto 12px;" />
+    </a>
+    <p>Presented at the Southeastern Section of the American Physical Society (SESAPS) meeting, hosted by Kennesaw State University, November 2026.</p>
+    <a class="btn-link" href="{{ '/AURA-MF/assets/Posters/SESAPS_2026_Poster.pdf' | relative_url }}" target="_blank" rel="noopener noreferrer">View Poster (PDF)</a>
+</section>
 
-    <table>
-        <thead>
-            <tr>
-                <th>Tier</th>
-                <th>Model</th>
-                <th>Suited For</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td><strong>simv0</strong></td>
-                <td>Baseline single-diode</td>
-                <td>Clear-sky, low-accuracy path</td>
-            </tr>
-            <tr style="background: #ecfdf5;">
-                <td><strong>simv1</strong></td>
-                <td>Faiman thermal + BTE-NS-T</td>
-                <td><strong>High-fidelity gold standard</strong></td>
-            </tr>
-            <tr>
-                <td><strong>simv1b</strong></td>
-                <td>simv1 + spectral inversion</td>
-                <td>Spectral mismatch correction</td>
-            </tr>
-            <tr>
-                <td><strong>simv2</strong></td>
-                <td>Sandia empirical PV model</td>
-                <td>Broad operating range</td>
-            </tr>
-            <tr>
-                <td><strong>simv2b</strong></td>
-                <td>Sandia + IIR filter</td>
-                <td>Noisy/rapidly-changing input</td>
-            </tr>
-            <tr>
-                <td><strong>simv3</strong></td>
-                <td>Sandia + energy-balance ODE</td>
-                <td>High-accuracy thermal tracking</td>
-            </tr>
-            <tr>
-                <td><strong>simv3b</strong></td>
-                <td>simv3 + Fuentes thermal corr.</td>
-                <td>Full thermal mass correction</td>
-            </tr>
-            <tr style="background: #ecfdf5;">
-                <td><strong>simv4</strong></td>
-                <td>Fortran + PINN weights router</td>
-                <td>Maximum fidelity, PINN-guided</td>
-            </tr>
-        </tbody>
-    </table>
-
-    <div style="margin-top: 2rem;">
-        <div class="project-grid">
-            <div class="project-card" style="border-color: var(--primary);">
-                <div class="card-label" style="color: var(--primary);">SimV4 — PINN Fidelity Router</div>
-                <div class="card-value" style="color: var(--primary);">&lt; 5 ms inference</div>
-                <div class="card-desc">
-                    DualHead PINN: predicts T<sub>panel</sub> and emits a 5-way routing probability vector
-                    (simv0–simv4). Weights embedded at compile time via <code>pinn_weights_module.f90</code>.
-                </div>
-            </div>
-            <div class="project-card">
-                <div class="card-label">Closed-Loop Data Flow</div>
-                <div class="card-value">Edge → PINN → Fortran</div>
-                <div class="card-desc">
-                    Pico RP2040 + Pi 3B+ sensors → DualHead PINN orchestrator →
-                    Fortran multi-fidelity solver (simv0–simv4) → actuator commands
-                </div>
-            </div>
-        </div>
+<section id="model">
+    <div style="border-left: 4px solid var(--primary); padding-left: 20px; margin: 50px 0 20px;">
+        <h2>Model</h2>
+    </div>
+    <div class="content-area">
+        <p><strong>Lumped energy balance</strong> (per unit area):</p>
+        <p style="text-align: center; font-family: Georgia, serif; font-size: 1.05rem;">
+            C dT/dt = &alpha;G &minus; &eta;(T) G &minus; h(v) (T &minus; T<sub>amb</sub>)<br>
+            &eta;(T) = &eta;<sub>ref</sub> [1 &minus; &beta; (T &minus; T<sub>STC</sub>)]<br>
+            h(v) = h<sub>0</sub> + k (v &minus; 1 m/s)
+        </p>
+        <p>Efficiency falls with temperature. h<sub>0</sub> comes from NOCT and k from McAdams. Irradiance is recovered from the panel's short-circuit current, corrected for temperature.</p>
+    </div>
+    <div class="content-area">
+        <p><strong>Surrogates:</strong></p>
+        <ul>
+            <li><strong>MLP:</strong> 8 inputs &rarr; steady-state temperature and 15-minute temperature, trained by MSE on 10<sup>6</sup> RK4 rows.</li>
+            <li><strong>Physics-constrained model:</strong> the exact solution of the energy balance, T(t) = T<sub>ss</sub> + (T<sub>0</sub> &minus; T<sub>ss</sub>) e<sup>&minus;&kappa;t/C</sup>. It learns only three physical constants (h<sub>0</sub>, k, C) plus a bounded residual.</li>
+        </ul>
+        <p><strong>MPC step:</strong> search a 19 &times; 19 pitch&ndash;yaw grid over a 15-minute horizon for the pose that maximizes G &middot; &eta;(T&#770;<sub>15</sub>).</p>
     </div>
 </section>
 
-<section id="performance">
-    <div style="border-left: 4px solid var(--primary); padding-left: 20px; margin: 60px 0 30px;">
-        <h2>Simulation Tier Performance Targets</h2>
+<section id="results">
+    <div style="border-left: 4px solid var(--primary); padding-left: 20px; margin: 50px 0 20px;">
+        <h2>Results</h2>
     </div>
-
-    <p style="margin-bottom: 1.5rem; color: var(--text);">
-        Validation is in progress using the <strong>Sandia PVMC dataset</strong> (Albuquerque, NM; 35.05°N, 106.54°W).
-        Target values below reflect design goals for each tier.
-    </p>
-    
-    <table>
-        <thead>
-            <tr>
-                <th>Metric</th>
-                <th style="text-align: center;">SimV1 (HF gold std.)</th>
-                <th style="text-align: center;">SimV2/V3 (empirical)</th>
-                <th style="text-align: center;">SimV4 (PINN router)</th>
-                <th style="text-align: center;">Target</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>Temperature RMSE [K]</td>
-                <td style="text-align: center; color: var(--primary);">pending</td>
-                <td style="text-align: center; color: var(--primary);">pending</td>
-                <td style="text-align: center; color: var(--primary);">pending</td>
-                <td style="text-align: center;">&lt; 2.0</td>
-            </tr>
-            <tr>
-                <td>Energy Error [%]</td>
-                <td style="text-align: center; color: var(--primary);">pending</td>
-                <td style="text-align: center; color: var(--primary);">pending</td>
-                <td style="text-align: center; color: var(--primary);">pending</td>
-                <td style="text-align: center;">&lt; 2.0</td>
-            </tr>
-            <tr>
-                <td>Wall-Clock Time [s]</td>
-                <td style="text-align: center;">—</td>
-                <td style="text-align: center;">—</td>
-                <td style="text-align: center; color: var(--dark); font-weight: bold;">&lt; 0.005</td>
-                <td style="text-align: center;">&lt; 10</td>
-            </tr>
-            <tr style="background: #ecfdf5;">
-                <td style="font-weight: 600;">Speedup Factor</td>
-                <td style="text-align: center;">1×</td>
-                <td style="text-align: center; color: var(--primary); font-weight: 800; font-size: 1.1rem;">est. 8–12×</td>
-                <td style="text-align: center; color: var(--primary); font-weight: 800; font-size: 1.1rem;">est. &gt; 15×</td>
-                <td style="text-align: center;">&gt; 10×</td>
-            </tr>
-        </tbody>
-    </table>
-</section>
-
-{% include AURA_MFP_Explorer.html %}
-<!--
-<section id="downloads">
-    <div style="border-left: 4px solid var(--primary); padding-left: 20px; margin: 60px 0 30px;">
-        <h2>Download Resources</h2>
+    <div class="content-area">
+        <h3 style="margin-top: 0;">Temperature cannot move the pose</h3>
+        <p>Differentiating P = G&eta;(T(G)) through the energy balance gives dP/dG &gt; 0 for every irradiance below G*. The smallest G* over 300 sweep conditions is 4,013 W/m&sup2;, while the largest irradiance available is 916 W/m&sup2; (model) and 1,485 W/m&sup2; (Sandia). The max-power pose matched the max-irradiance pose in 100% of conditions, so the MPC acts as a sun tracker.</p>
     </div>
-    
-    <div class="project-grid">
-        <a href="{{ '/AURA-MF/downloads/AURA-MFP-main.zip' | relative_url }}" class="download-btn">
-            <span class="icon">📦</span>
-            <div>
-                <strong>Source Code v1.0</strong>
-                <span>Fortran 90/95 repository</span>
-            </div>
-        </a>
-        
-        <a href="{{ '/AURA-MF/downloads/Theory_Manual.pdf' | relative_url }}" class="download-btn">
-            <span class="icon">📘</span>
-            <div>
-                <strong>Theory Manual</strong>
-                <span>Mathematical foundations</span>
-            </div>
-        </a>
-        
-        <a href="{{ '/AURA-MF/downloads/User_Guide.pdf' | relative_url }}" class="download-btn">
-            <span class="icon">🚀</span>
-            <div>
-                <strong>User Guide</strong>
-                <span>Installation & tutorials</span>
-            </div>
-        </a>
+    <div class="content-area">
+        <h3 style="margin-top: 0;">Real-data validation: 15-minute-ahead panel temperature</h3>
+        <p>Sandia module data (Albuquerque, NM; Driesse et al., 2023). Fit January&ndash;June 2020, scored July&ndash;December.</p>
+        <table>
+            <thead>
+                <tr><th>RMSE [K]</th><th style="text-align: center;">Perfect weather</th><th style="text-align: center;">Deployable weather</th></tr>
+            </thead>
+            <tbody>
+                <tr><td>Persistence</td><td style="text-align: center;">3.20</td><td style="text-align: center;">3.23</td></tr>
+                <tr><td>Current physics (NOCT)</td><td style="text-align: center;">5.12</td><td style="text-align: center;">5.57</td></tr>
+                <tr><td>MLP, zero-shot</td><td style="text-align: center;">7.51</td><td style="text-align: center;">7.96</td></tr>
+                <tr><td>Physics, calibrated</td><td style="text-align: center;"><strong>2.21</strong></td><td style="text-align: center;">3.04</td></tr>
+                <tr><td>Physics, calibrated + residual</td><td style="text-align: center;"><strong>2.02</strong></td><td style="text-align: center;"><strong>3.00</strong></td></tr>
+            </tbody>
+        </table>
+        <ul>
+            <li>The generator's wind slope is too steep: Sandia calibrates k = 4.12 vs. McAdams 6.78 W m<sup>&minus;2</sup> K<sup>&minus;1</sup>/(m/s).</li>
+            <li>Calibrated physics beats persistence after only 100 real samples (perfect weather).</li>
+            <li>A Faiman model fit to the same data gives 3.96 K (steady state).</li>
+        </ul>
+    </div>
+    <div class="content-area">
+        <h3 style="margin-top: 0;">Closed-loop sandbox</h3>
+        <p>The sandbox simulates the planned data acquisition system (Raspberry Pi Pico, 5 thermocouples, weather meter) with sensor errors and dropped packets.</p>
+        <ul>
+            <li>MPC / oracle energy: 0.987</li>
+            <li>Fixed tilt / oracle energy: 0.678 (overstated, since the sandbox uses beam-only irradiance with no diffuse light)</li>
+        </ul>
     </div>
 </section>
--->
-<div class="warning-box">
-    <h3 style="margin-top: 0;">⚠️ Development in Progress</h3>
-    <p>This dashboard is currently under active development. Full WebSocket integration and real-time rendering are 
-    scheduled for <strong>Phase 3</strong> of the AURA-MFP roadmap (Q2 2026).</p>
-</div>
 
+<section id="next-steps">
+    <div style="border-left: 4px solid var(--primary); padding-left: 20px; margin: 50px 0 20px;">
+        <h2>Next Steps</h2>
+    </div>
+    <div class="content-area">
+        <ul style="margin: 0;">
+            <li>Collect thermocouple data on our own panel in Clarksville, TN.</li>
+            <li>Refit k and C on that data, then regenerate the training set and retrain.</li>
+            <li>Model pose-dependent convection (tilt vs. wind direction), the one way wind could move the pose, and add diffuse light.</li>
+        </ul>
+    </div>
+</section>
 
-<!--<section class="theory-box">
-    <h3 style="margin-top: 0; color: var(--info);">Publication Ready</h3>
-    <p style="margin-bottom: 0; color: var(--text);">
-        AURA-MFP has been validated against the <strong>Sandia PVMC dataset</strong> 
-        (318-328 K operating temperature) and is ready for submission to 
-        <em>Solar Energy</em> or <em>Applied Energy</em> journals.
-    </p>
-</section>-->
+<section id="history">
+    <div style="border-left: 4px solid var(--primary); padding-left: 20px; margin: 50px 0 20px;">
+        <h2>Project History</h2>
+    </div>
+    <div class="content-area">
+        <p>This project started in November 2025 as AURA-MF, a multi-fidelity Fortran simulator coupling the Boltzmann Transport Equation with Navier-Stokes. It was later narrowed to a single RK4 thermal generator, a neural surrogate, and the MPC described above. An earlier version of the work was presented at the Tennessee Academy of Science in April 2026.</p>
+        <a class="btn-link" href="{{ '/AURA-MF/assets/Posters/TAS_Poster.pdf' | relative_url }}" target="_blank" rel="noopener noreferrer">TAS 2026 Poster (PDF)</a>
+    </div>
+</section>
+
+<section id="acknowledgements" class="theory-box">
+    <h3 style="margin-top: 0;">Acknowledgements</h3>
+    <p style="margin-bottom: 0;">Funded by the APSU Department of Physics, Engineering, and Astronomy. Thanks to Bryan Gaither for help acquiring tools, and to Sandia National Laboratories for the open module-temperature dataset.</p>
+</section>
