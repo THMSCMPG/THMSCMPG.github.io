@@ -30,19 +30,18 @@ A lumped energy balance for the panel generates synthetic training data with an 
 
 ## Experimental Optics: Index of Refraction Study
 
-**The Project:** "Comparing Seven Methods for Determining the Refractive Index of a Glass Prism."
+**The Project:** "Comparative Analysis on the Refractive Index of a Prism Using a Versatile Spectrometer-Goniometer Setup" (Jair Martinez, Keira Scott, W. Thomas Campagna, Michael Graff, and Eugenii U. Donev)
 
-We are evaluating different experimental techniques to see which offers the best balance of accuracy and pedagogical value. The methods include:
-* Minimum Deviation
-* Fresnel Reflectance
-* Fitting to the Minimum Deviation Curve
-* Brewster’s Angle
-* Rotating Analyzer Ellipsometry (RAE)
-* Total Internal Reflection
+We compare seven methods for determining the refractive index of a glass prism across five laser wavelengths, all on one spectrometer-goniometer setup, to see which offers the best balance of accuracy and pedagogical value. The methods include:
+* **Geometric:** Angle of Minimum Deviation, Angle of Deviation Fit
+* **Intensity-based:** Brewster's Angle, Fresnel Reflectance Fit
+* **Phase-sensitive:** Rotating Analyzer Ellipsometry Fit, Total Internal Reflection, Polarized Total Internal Reflection
+
+The angle of minimum deviation has been the most accurate so far (maximum 0.048%, average 0.023% error from Sellmeier values).
 
 <img width="883" alt="Index of Refraction Data" src="https://github.com/user-attachments/assets/6463f09c-22e5-47a2-8dfa-a9c4c0bbf42f" />
 
-> **Note on Figure:** This plot compares our experimental data against the Sellmeier Equation. Our most recent RAE data is currently being integrated into the final analysis.
+> **Note on Figure:** This plot compares an earlier set of our experimental data against the Sellmeier Equation.
 
 **Next Steps:** We are preparing the paper for the European Journal of Physics.
 
