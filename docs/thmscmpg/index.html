@@ -6,7 +6,7 @@ title: Home
 
 <div class="content-area">
     <p>Hello, I'm Thomas Campagna! I am an undergraduate Physics and Math student at Austin Peay State University. I am an aspiring Computational Physicist specializing in Photonics and Environmental Physics. I have a particular interest in studying climate physics and how it relates to sustainable energy.</p>
-    <p>My interests sit at the intersection of computational physics, multi-fidelity modeling, and building research infrastructure that makes simulation more interpretable and scalable.</p>
+    <p>My interests sit at the intersection of computational physics, physics-informed machine learning, and building research infrastructure that makes simulation more interpretable and scalable.</p>
     
     <div class="theory-box">
         <strong>Research Interests:</strong>
@@ -22,9 +22,9 @@ title: Home
     <div class="category-card">
         <h3>Technical Skills</h3>
         <ul>
-            <li><strong>Languages:</strong> Python, Fortran, MATLAB, LaTeX</li>
+            <li><strong>Languages:</strong> Python, Fortran, C, C++, SQL, MATLAB, LaTeX</li>
             <li><strong>Lab Skills:</strong> Oscilloscopes, Goniometers, Various Optics related techniques</li>
-            <li><strong>Developer Tools:</strong> Git/GitHub, Linux/Unix, HPC/Slurm</li>
+            <li><strong>Developer Tools:</strong> Git/GitHub, Linux/Unix, HPC/Slurm, PyTorch, KiCad</li>
         </ul>
     </div>
 
@@ -32,14 +32,16 @@ title: Home
         <h2 style="border:none; background:none; padding:0;">Ongoing Research</h2>
         
         <div class="category-card" style="margin-bottom: 30px;">
-            <h3>Comparing 5 Methods for Determining the Index of Refraction of a Glass Prism</h3>
-            <p>We focus on 5 methods, their accuracy and pedagogical value for undergraduate physics. Methods include minimum deviation, Fresnel reflectance, fitting to the minimum deviation curve, Brewster’s angle, and Rotating Analyzer Ellipsometry (RAE). We will be continuing research moving forward with total internal reflection.</p>
+            <h3>Comparative Analysis on the Refractive Index of a Prism Using a Versatile Spectrometer-Goniometer Setup</h3>
+            <p>With Jair Martinez, Keira Scott, Michael Graff, and Dr. Eugenii Donev, I compare seven methods for determining the refractive index of a glass prism (geometric, intensity-based, and phase-sensitive) across five laser wavelengths, all on one spectrometer-goniometer setup. The angle of minimum deviation has been the most accurate so far, with a maximum error of 0.048% from Sellmeier values. We are preparing the paper for the European Journal of Physics.</p>
+            <a class="btn-link" href="{{ '/thmscmpg/projects/' | relative_url }}">Read More</a>
         </div>
         
         <div class="category-card">
-            <h3>Atmospheric Unified Radiation Assessment with Multi-Fidelity</h3>
-            <p>Since November 2025, I have taken on an independent research project to build a tightly coupled physics simulation involving the Boltzmann Transport Equation and the Navier Stokes Equations, optimized for speed while limiting the loss in accuracy through multi-fidelity integration. The goal of this research is to design a simulation that will model a local micro-climate and photon interactions with a solar panel to determine the energy efficiency, heat distribution, and total damage to the device over time. The simulation is written in Fortran.</p>
-            <p><strong>Current progress:</strong> This simulator has recently passed the proof-of-concept phase and is moving on to further development.</p>
+            <h3>AURA-MPC: Model Predictive Control for Photovoltaic Panel Orientation</h3>
+            <p>An independent research project funded by the APSU Department of Physics, Engineering, and Astronomy. I built a model predictive controller for a 3-axis solar panel mount that uses a neural surrogate of a lumped thermal model, trained on data from an RK4 generator written in Fortran. On a year of Sandia National Laboratories module data, a physics-calibrated model beats persistence for 15-minute panel temperature forecasts (2.21 K vs 3.20 K RMSE), and in a closed-loop sandbox the controller captures 98.7% of oracle energy.</p>
+            <p><strong>Current progress:</strong> Building the data acquisition system to collect thermocouple data on our own panel in Clarksville, TN.</p>
+            <a class="btn-link" href="{{ '/AURA-MF/' | relative_url }}">Read More</a>
         </div>
     </section>
 
@@ -49,6 +51,20 @@ title: Home
     <section class="demo-section">
         <h3>Presentations</h3>
         
+        <h4>Model Predictive Control: Physics-Informed Surrogate for Photovoltaic Panel Orientation</h4>
+
+        <img alt="poster on model predictive control for photovoltaic panel orientation" src="{{ '/AURA-MF/assets/Posters/SESAPS_2026_Poster.jpg' | relative_url }}" style="max-width: 100%; height: auto; display: block; margin: 20px auto;" />
+        <table style='align: center'>
+        <tr>
+            <th>
+                <ul>
+                    <li>This poster summarizes the AURA-MPC work as of November 2026: the surrogate, real-data validation against Sandia, and the closed-loop sandbox.</li>
+                    <li>Presented at the 2026 SESAPS meeting, hosted by Kennesaw State University</li>
+                </ul>
+            </th>
+        </tr>
+        </table>
+
         <h4>Comparing Five Methods for Determining the Refractive Index of a Glass Prism Using a Multi-Wavelength Laser and a Versatile Optical Setup</h4>
 
         <img alt="poster comparing five methods for determining the refractive index of a glass prism" src="{{ '/thmscmpg/portfolio/SPS_CON_2025_Poster.png' | relative_url }}" style="max-width: 100%; height: auto; display: block; align: center; margin: 20px auto;" />
@@ -78,6 +94,16 @@ title: Home
         </table>
 
         
+    </section>
+
+    <section class="demo-section">
+        <h2 style="border:none; background:none; padding:0;">Other Projects</h2>
+
+        <div class="category-card">
+            <h3>Game Developer, Train Wreck Company</h3>
+            <p>I work as a developer at Train Wreck Company, an independent game studio. I program gameplay and engine systems in C++ for <strong>BREACHPUNK</strong>, a 2D narrative game currently in development, and work on the studio&rsquo;s in-house engine and editor used to prototype mechanics, playtest, and build its games.</p>
+            <a class="btn-link" href="https://trainwreckcompany.github.io/" target="_blank" rel="noopener noreferrer">Visit Train Wreck Company</a>
+        </div>
     </section>
 
     <div class="category-card" style="background: #ecfdf5; border: 1px solid #10b981; padding: 25px; border-radius: 12px; margin-top: 40px;">
